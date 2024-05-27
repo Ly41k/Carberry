@@ -55,16 +55,22 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(compose.runtime)
+            implementation(compose.ui)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(compose.materialIconsExtended)
+
             implementation(libs.composeImageLoader)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.ktor.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.kodein)
+
+            implementation(libs.compose.viewmodel)
+            implementation(libs.compose.navigation)
         }
 
         commonTest.dependencies {
