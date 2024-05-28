@@ -13,9 +13,18 @@ fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
 
 
     when (viewAction) {
-        SplashAction.OpenLoginScreen -> TODO()
-        SplashAction.OpenMainScreen -> TODO()
-        SplashAction.OpenOnboardingScreen -> TODO()
+        SplashAction.OpenLoginScreen -> {
+
+        }
+
+        SplashAction.OpenMainScreen -> {
+
+        }
+
+        SplashAction.OpenOnboardingScreen -> {
+
+        }
+
         null -> {
             /* Do nothing*/
         }
