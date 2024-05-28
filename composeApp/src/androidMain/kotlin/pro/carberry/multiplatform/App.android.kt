@@ -7,6 +7,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.CompositionLocalProvider
+import pro.carberry.multiplatform.core.di.LocalPlatform
+import pro.carberry.multiplatform.core.di.Platform
+import pro.carberry.multiplatform.core.di.PlatformConfiguration
+import pro.carberry.multiplatform.core.di.PlatformSDK
 
 class AndroidApp : Application() {
     companion object {
@@ -16,14 +21,24 @@ class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
+        initPlatformSDK()
     }
+
+    private fun AndroidApp.initPlatformSDK() =
+        PlatformSDK.init(PlatformConfiguration(context = applicationContext))
 }
 
 class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent { App() }
+        setContent {
+            CompositionLocalProvider(
+                LocalPlatform provides Platform.Android
+            ) {
+                CarberryApp()
+            }
+        }
     }
 }
 
