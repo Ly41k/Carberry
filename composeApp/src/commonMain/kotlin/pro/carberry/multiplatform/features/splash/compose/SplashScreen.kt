@@ -17,12 +17,18 @@ import carberry.composeapp.generated.resources.Res
 import carberry.composeapp.generated.resources.ic_logo_vertical
 import org.jetbrains.compose.resources.painterResource
 import pro.carberry.multiplatform.core.extensions.observeAsState
+import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
+import pro.carberry.multiplatform.core.naviagtion.navigateToLogin
+import pro.carberry.multiplatform.core.naviagtion.navigateToMain
+import pro.carberry.multiplatform.core.naviagtion.navigateToOnboarding
 import pro.carberry.multiplatform.features.splash.presentation.SplashViewModel
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction
 import pro.carberry.multiplatform.theme.AppTheme
 
 @Composable
 fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
+    val navController = LocalRootNavHostController.current
+
     val viewAction by viewModel.viewActions().observeAsState()
 
     Column(
@@ -41,18 +47,9 @@ fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
     }
 
     when (viewAction) {
-        SplashAction.OpenLoginScreen -> {
-
-        }
-
-        SplashAction.OpenMainScreen -> {
-
-        }
-
-        SplashAction.OpenOnboardingScreen -> {
-
-        }
-
+        SplashAction.OpenLoginScreen -> navController.navigateToLogin()
+        SplashAction.OpenMainScreen -> navController.navigateToMain()
+        SplashAction.OpenOnboardingScreen -> navController.navigateToOnboarding()
         null -> {
             /* Do nothing*/
         }

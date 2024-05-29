@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 
 abstract class BaseViewModel<State : Any, Action, Event> : ViewModel() {
     private val _viewActions =
-        MutableSharedFlow<Action?>(extraBufferCapacity = 1, onBufferOverflow = DROP_OLDEST)
+        MutableSharedFlow<Action?>(replay = 1, onBufferOverflow = DROP_OLDEST)
 
     fun viewActions(): SharedFlow<Action?> = _viewActions.asSharedFlow()
 
