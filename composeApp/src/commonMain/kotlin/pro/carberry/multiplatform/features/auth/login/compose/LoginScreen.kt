@@ -11,10 +11,9 @@ import pro.carberry.multiplatform.features.auth.login.presentation.LoginViewMode
 fun LoginScreen(
     viewModel: LoginViewModel = viewModel { LoginViewModel() }
 ) {
-    println("LoginScreen")
+
     val state by viewModel.viewStates().collectAsState()
     val action by viewModel.viewActions().observeAsState()
-
     LoginView(state) { event -> viewModel.obtainEvent(event) }
 
 }

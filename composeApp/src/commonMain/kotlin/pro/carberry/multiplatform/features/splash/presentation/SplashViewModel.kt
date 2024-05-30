@@ -1,14 +1,9 @@
 package pro.carberry.multiplatform.features.splash.presentation
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import pro.carberry.multiplatform.core.presentation.BaseViewModel
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction
 
-class SplashViewModel : BaseViewModel<Unit, SplashAction, Unit>() {
-
-    private val _state = MutableStateFlow(Unit)
-    override fun viewStates(): StateFlow<Unit> = _state
+class SplashViewModel : BaseViewModel<Unit, SplashAction, Unit>(Unit) {
 
     init {
         checkUserStatus()

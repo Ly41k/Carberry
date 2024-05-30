@@ -4,6 +4,7 @@ import androidx.navigation.NavHostController
 import pro.carberry.multiplatform.navigation.RootAppScreens
 
 fun NavHostController.navigateToLogin() {
+    popBackStack()
     navigate(RootAppScreens.Login.name)
 }
 
