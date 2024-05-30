@@ -1,7 +1,6 @@
 package pro.carberry.multiplatform.features.splash.compose
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,7 +21,9 @@ import pro.carberry.multiplatform.core.naviagtion.navigateToLogin
 import pro.carberry.multiplatform.core.naviagtion.navigateToMain
 import pro.carberry.multiplatform.core.naviagtion.navigateToOnboarding
 import pro.carberry.multiplatform.features.splash.presentation.SplashViewModel
-import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction
+import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenLoginScreen
+import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenMainScreen
+import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenOnboardingScreen
 import pro.carberry.multiplatform.theme.AppTheme
 
 @Composable
@@ -32,9 +33,7 @@ fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
     val viewAction by viewModel.viewActions().observeAsState()
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(AppTheme.colors.primaryBackground),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -47,9 +46,9 @@ fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
     }
 
     when (viewAction) {
-        SplashAction.OpenLoginScreen -> navController.navigateToLogin()
-        SplashAction.OpenMainScreen -> navController.navigateToMain()
-        SplashAction.OpenOnboardingScreen -> navController.navigateToOnboarding()
+        OpenLoginScreen -> navController.navigateToLogin()
+        OpenMainScreen -> navController.navigateToMain()
+        OpenOnboardingScreen -> navController.navigateToOnboarding()
         null -> {
             /* Do nothing*/
         }

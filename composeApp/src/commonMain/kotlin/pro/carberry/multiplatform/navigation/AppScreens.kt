@@ -6,8 +6,11 @@ enum class RootAppScreens {
     Login,
     Register,
     ForgotPassword,
+    RefundPolicy,
+    TermsOfService,
     Main
 }
+
 
 enum class MainAppScreens {
     Home, Orders, Profile

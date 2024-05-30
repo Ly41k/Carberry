@@ -2,6 +2,9 @@ package pro.carberry.multiplatform.features.splash.presentation
 
 import pro.carberry.multiplatform.core.presentation.BaseViewModel
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction
+import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenLoginScreen
+import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenMainScreen
+import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenOnboardingScreen
 
 class SplashViewModel : BaseViewModel<Unit, SplashAction, Unit>(Unit) {
 
@@ -13,9 +16,9 @@ class SplashViewModel : BaseViewModel<Unit, SplashAction, Unit>(Unit) {
 
     private fun checkUserStatus() {
         viewAction = when {
-            !isUserPassedOnboarding() -> SplashAction.OpenOnboardingScreen
-            isUserAuthorized() -> SplashAction.OpenLoginScreen
-            else -> SplashAction.OpenMainScreen
+            !isUserPassedOnboarding() -> OpenOnboardingScreen
+            isUserAuthorized() -> OpenLoginScreen
+            else -> OpenMainScreen
         }
     }
 

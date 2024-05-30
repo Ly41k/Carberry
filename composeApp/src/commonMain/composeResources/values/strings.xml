@@ -1,7 +1,15 @@
 <resources>
-    <string name="cyclone">Cyclone</string>
-    <string name="open_github">Open github</string>
-    <string name="run">Run</string>
-    <string name="stop">Stop</string>
-    <string name="theme">Theme</string>
+    <string name="app_name">Carberry</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="login_now">Login now</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="welcome_back_to_carberry">Welcome back to Carberry!</string>
+    <string name="refund_policy">Refund policy</string>
+    <string name="terms_of_service">Terms of service</string>
+    <string name="password_hidden">Password hidden</string>
+    <string name="password_shown">Password shown</string>
+    <string name="do_not_have_account">Don’t have account?</string>
+    <string name="create_one">Create one</string>
 </resources>

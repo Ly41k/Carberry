@@ -11,8 +11,8 @@ val typography = AppTypographies(
     largeHeading = TextStyle(
         fontStyle = FontStyle.Normal,
         fontWeight = FontWeight.Bold,
-        fontSize = 48.sp,
-        lineHeight = 58.sp
+        fontSize = 36.sp,
+        lineHeight = 46.sp
     ),
     mediumHeading = TextStyle(
         fontStyle = FontStyle.Normal,
@@ -23,7 +23,7 @@ val typography = AppTypographies(
     smallHeading = TextStyle(
         fontStyle = FontStyle.Normal,
         fontWeight = FontWeight.Bold,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         lineHeight = 24.sp
     ),
     mediumText = TextStyle(
@@ -43,7 +43,7 @@ val typography = AppTypographies(
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 22.sp
-    ),
+    )
 )
 
 internal val LocalAppTypographies = staticCompositionLocalOf<AppTypographies> {
