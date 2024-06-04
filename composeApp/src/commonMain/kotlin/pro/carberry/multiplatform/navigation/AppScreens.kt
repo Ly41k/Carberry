@@ -2,14 +2,18 @@ package pro.carberry.multiplatform.navigation
 
 enum class RootAppScreens {
     Splash,
+    AuthFlow,
     Onboarding,
-    Login,
-    Register,
-    ForgotPassword,
-    ResetPassword,
     RefundPolicy,
     TermsOfService,
     Main
+}
+
+enum class AuthAppScreens {
+    Login,
+    Register,
+    ForgotPassword,
+    ResetPassword
 }
 
 

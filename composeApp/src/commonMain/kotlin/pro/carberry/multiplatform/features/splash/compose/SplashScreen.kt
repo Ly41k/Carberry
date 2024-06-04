@@ -10,6 +10,7 @@ import pro.carberry.multiplatform.features.splash.presentation.SplashViewModel
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenLoginScreen
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenMainScreen
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenOnboardingScreen
+import pro.carberry.multiplatform.navigation.AuthAppScreens
 import pro.carberry.multiplatform.navigation.RootAppScreens
 
 @Composable
@@ -31,7 +32,7 @@ fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
 
 private fun NavHostController.navigateToLogin() {
     popBackStack()
-    navigate(RootAppScreens.Login.name)
+    navigate(AuthAppScreens.Login.name)
 }
 
 private fun NavHostController.navigateToMain() {

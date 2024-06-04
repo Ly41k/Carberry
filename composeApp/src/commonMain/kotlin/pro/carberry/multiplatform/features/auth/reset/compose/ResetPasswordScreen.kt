@@ -10,7 +10,7 @@ import pro.carberry.multiplatform.core.naviagtion.navigateToRefundPolicy
 import pro.carberry.multiplatform.core.naviagtion.navigateToTermsOfService
 import pro.carberry.multiplatform.features.auth.reset.presentation.ResetPasswordViewModel
 import pro.carberry.multiplatform.features.auth.reset.presentation.models.ResetPasswordAction
-import pro.carberry.multiplatform.navigation.RootAppScreens
+import pro.carberry.multiplatform.navigation.AuthAppScreens
 
 @Composable
 fun ResetPasswordScreen(
@@ -26,7 +26,7 @@ fun ResetPasswordScreen(
     when (action) {
         ResetPasswordAction.OpenLoginPassword -> {
             navController.popBackStack(
-                route = RootAppScreens.Login.name,
+                route = AuthAppScreens.Login.name,
                 inclusive = false
             )
         }

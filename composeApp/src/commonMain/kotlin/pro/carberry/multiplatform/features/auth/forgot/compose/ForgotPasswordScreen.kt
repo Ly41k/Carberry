@@ -10,7 +10,7 @@ import pro.carberry.multiplatform.core.naviagtion.navigateToRefundPolicy
 import pro.carberry.multiplatform.core.naviagtion.navigateToTermsOfService
 import pro.carberry.multiplatform.features.auth.forgot.presentation.ForgotPasswordViewModel
 import pro.carberry.multiplatform.features.auth.forgot.presentation.models.ForgotPasswordAction
-import pro.carberry.multiplatform.navigation.RootAppScreens
+import pro.carberry.multiplatform.navigation.AuthAppScreens
 
 @Composable
 fun ForgotPasswordScreen(
@@ -26,7 +26,7 @@ fun ForgotPasswordScreen(
     when (action) {
         ForgotPasswordAction.OpenLoginScreen -> {
             navController.popBackStack(
-                route = RootAppScreens.Login.name,
+                route = AuthAppScreens.Login.name,
                 inclusive = false
             )
         }
@@ -36,12 +36,12 @@ fun ForgotPasswordScreen(
         }
 
         ForgotPasswordAction.OpenRegistrationScreen -> {
-            navController.navigate(RootAppScreens.Register.name)
+            navController.navigate(AuthAppScreens.Register.name)
             viewModel.clearAction()
         }
 
         ForgotPasswordAction.OpenResetPassword -> {
-            navController.navigate(RootAppScreens.ResetPassword.name)
+            navController.navigate(AuthAppScreens.ResetPassword.name)
             viewModel.clearAction()
         }
 

@@ -14,6 +14,7 @@ import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginA
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenRefundPolicy
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenRegistrationScreen
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenTermsOfService
+import pro.carberry.multiplatform.navigation.AuthAppScreens
 import pro.carberry.multiplatform.navigation.RootAppScreens
 
 @Composable
@@ -29,7 +30,7 @@ fun LoginScreen(
 
     when (action) {
         OpenForgotPasswordScreen -> {
-            navController.navigate(RootAppScreens.ForgotPassword.name)
+            navController.navigate(AuthAppScreens.ForgotPassword.name)
             viewModel.clearAction()
         }
 
@@ -43,7 +44,7 @@ fun LoginScreen(
         }
 
         OpenRegistrationScreen -> {
-            navController.navigate(RootAppScreens.Register.name)
+            navController.navigate(AuthAppScreens.Register.name)
         }
 
         OpenTermsOfService -> {
