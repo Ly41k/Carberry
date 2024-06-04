@@ -49,7 +49,7 @@ class LoginViewModel : BaseViewModel<LoginViewState, LoginAction, LoginEvent>(Lo
     }
 
     private fun sendLogin() {
-        viewAction = LoginAction.OpenForgotPasswordScreen
+        viewAction = LoginAction.OpenMainFlow
     }
 
     private fun openRefundPolicy() {

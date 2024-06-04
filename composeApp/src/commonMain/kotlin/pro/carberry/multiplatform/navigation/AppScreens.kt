@@ -6,6 +6,7 @@ enum class RootAppScreens {
     Login,
     Register,
     ForgotPassword,
+    ResetPassword,
     RefundPolicy,
     TermsOfService,
     Main

@@ -1,4 +1,4 @@
-package pro.carberry.multiplatform.features.auth.login.compose
+package pro.carberry.multiplatform.features.auth.forgot.compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -7,13 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Lock
-import androidx.compose.material.icons.outlined.LockOpen
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -23,35 +18,25 @@ import carberry.composeapp.generated.resources.create_one
 import carberry.composeapp.generated.resources.do_not_have_account
 import carberry.composeapp.generated.resources.email
 import carberry.composeapp.generated.resources.forgot_password
+import carberry.composeapp.generated.resources.forgot_password_description
 import carberry.composeapp.generated.resources.login
-import carberry.composeapp.generated.resources.login_now
-import carberry.composeapp.generated.resources.password
-import carberry.composeapp.generated.resources.password_hidden
-import carberry.composeapp.generated.resources.password_shown
 import carberry.composeapp.generated.resources.refund_policy
+import carberry.composeapp.generated.resources.reset_password
 import carberry.composeapp.generated.resources.terms_of_service
-import carberry.composeapp.generated.resources.welcome_back_to_carberry
 import org.jetbrains.compose.resources.stringResource
 import pro.carberry.multiplatform.core.compose.button.CarberryActionButton
 import pro.carberry.multiplatform.core.compose.button.CarberryOutlinedTextField
 import pro.carberry.multiplatform.core.compose.text.CarberryTextLeft
-import pro.carberry.multiplatform.core.extensions.noRippleClickable
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.EmailValueChanged
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.ForgotPasswordClick
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.LoginClick
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.PasswordShowsClick
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.PasswordValueChanged
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.RefundPolicyClick
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.TermsOfServiceClick
-import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginViewState
+import pro.carberry.multiplatform.features.auth.forgot.presentation.models.ForgotPasswordEvent
+import pro.carberry.multiplatform.features.auth.forgot.presentation.models.ForgotPasswordViewState
 import pro.carberry.multiplatform.theme.AppTheme
 
 @Composable
-fun LoginView(
-    state: LoginViewState,
-    eventHandler: (LoginEvent) -> Unit
+fun ForgotPasswordView(
+    state: ForgotPasswordViewState,
+    eventHandler: (ForgotPasswordEvent) -> Unit
 ) {
+
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
         Column(
             modifier = Modifier.fillMaxWidth().weight(1f),
@@ -60,7 +45,7 @@ fun LoginView(
             Text(
                 modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
                 style = AppTheme.typography.mediumHeading,
-                text = stringResource(Res.string.login_now),
+                text = stringResource(Res.string.forgot_password),
                 color = AppTheme.colors.primaryText,
                 textAlign = TextAlign.Center
             )
@@ -68,7 +53,7 @@ fun LoginView(
             Text(
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
                 style = AppTheme.typography.smallHeading,
-                text = stringResource(Res.string.welcome_back_to_carberry),
+                text = stringResource(Res.string.forgot_password_description),
                 textAlign = TextAlign.Center,
                 color = AppTheme.colors.secondaryText
             )
@@ -78,44 +63,32 @@ fun LoginView(
                 text = state.emailValue,
                 hint = stringResource(Res.string.email),
                 enabled = true,
-                onValueChanged = { eventHandler(EmailValueChanged(it)) }
-            )
-
-            CarberryOutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                text = state.passwordValue,
-                hint = stringResource(Res.string.password),
-                enabled = true,
-                isSecure = !state.isPasswordShowed,
-                trailingIcon = {
-                    PasswordTrailingIcon(state.isPasswordShowed) { eventHandler.invoke(PasswordShowsClick) }
-                },
-                onValueChanged = { eventHandler(PasswordValueChanged(it)) }
+                onValueChanged = { eventHandler(ForgotPasswordEvent.EmailValueChanged(it)) }
             )
 
             CarberryTextLeft(
                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                stringRes = Res.string.forgot_password,
-                onClick = { eventHandler(ForgotPasswordClick) }
+                stringRes = Res.string.login,
+                onClick = { eventHandler(ForgotPasswordEvent.LoginClick) }
             )
 
             CarberryActionButton(
                 modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
-                text = stringResource(Res.string.login),
+                text = stringResource(Res.string.reset_password),
                 enabled = true,
-                onClick = { eventHandler(LoginClick) }
+                onClick = { eventHandler(ForgotPasswordEvent.ResetPasswordClick) }
             )
 
             CarberryTextLeft(
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
                 stringRes = Res.string.refund_policy,
-                onClick = { eventHandler(RefundPolicyClick) }
+                onClick = { eventHandler(ForgotPasswordEvent.RefundPolicyClick) }
             )
 
             CarberryTextLeft(
                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
                 stringRes = Res.string.terms_of_service,
-                onClick = { eventHandler(TermsOfServiceClick) }
+                onClick = { eventHandler(ForgotPasswordEvent.TermsOfServiceClick) }
             )
         }
 
@@ -133,7 +106,7 @@ fun LoginView(
             )
 
             Text(
-                modifier = Modifier.clickable { eventHandler(LoginEvent.RegisterClick) },
+                modifier = Modifier.clickable { eventHandler(ForgotPasswordEvent.RegisterClick) },
                 style = AppTheme.typography.smallHeading,
                 text = stringResource(Res.string.create_one),
                 textAlign = TextAlign.Center,
@@ -141,16 +114,4 @@ fun LoginView(
             )
         }
     }
-}
-
-@[Stable Composable]
-private fun PasswordTrailingIcon(isPasswordShowed: Boolean, onClick: () -> Unit) {
-    Icon(
-        modifier = Modifier.noRippleClickable { onClick() },
-        imageVector = if (isPasswordShowed) Icons.Outlined.Lock else Icons.Outlined.LockOpen,
-        tint = AppTheme.colors.secondaryText,
-        contentDescription = stringResource(
-            if (isPasswordShowed) Res.string.password_shown else Res.string.password_hidden
-        )
-    )
 }

@@ -10,7 +10,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
+import pro.carberry.multiplatform.features.auth.forgot.compose.ForgotPasswordScreen
 import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
+import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
 import pro.carberry.multiplatform.features.splash.compose.SplashScreen
 import pro.carberry.multiplatform.theme.AppTheme
 
@@ -27,6 +29,12 @@ fun RootAppGraph(navController: NavHostController = rememberNavController()) {
         ) {
             composable(route = RootAppScreens.Splash.name) { SplashScreen() }
             composable(route = RootAppScreens.Login.name) { LoginScreen() }
+            composable(route = RootAppScreens.ForgotPassword.name) {
+                ForgotPasswordScreen()
+            }
+            composable(route = RootAppScreens.ResetPassword.name) {
+                ResetPasswordScreen()
+            }
             composable(route = RootAppScreens.Main.name) { MainAppGraph() }
         }
     }
