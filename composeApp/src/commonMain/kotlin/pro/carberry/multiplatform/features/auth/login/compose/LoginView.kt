@@ -7,13 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Lock
-import androidx.compose.material.icons.outlined.LockOpen
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -26,16 +21,14 @@ import carberry.composeapp.generated.resources.forgot_password
 import carberry.composeapp.generated.resources.login
 import carberry.composeapp.generated.resources.login_now
 import carberry.composeapp.generated.resources.password
-import carberry.composeapp.generated.resources.password_hidden
-import carberry.composeapp.generated.resources.password_shown
 import carberry.composeapp.generated.resources.refund_policy
 import carberry.composeapp.generated.resources.terms_of_service
 import carberry.composeapp.generated.resources.welcome_back_to_carberry
 import org.jetbrains.compose.resources.stringResource
 import pro.carberry.multiplatform.core.compose.button.CarberryActionButton
 import pro.carberry.multiplatform.core.compose.button.CarberryOutlinedTextField
+import pro.carberry.multiplatform.core.compose.icon.PasswordTrailingIcon
 import pro.carberry.multiplatform.core.compose.text.CarberryTextLeft
-import pro.carberry.multiplatform.core.extensions.noRippleClickable
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.EmailValueChanged
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.ForgotPasswordClick
@@ -141,16 +134,4 @@ fun LoginView(
             )
         }
     }
-}
-
-@[Stable Composable]
-private fun PasswordTrailingIcon(isPasswordShowed: Boolean, onClick: () -> Unit) {
-    Icon(
-        modifier = Modifier.noRippleClickable { onClick() },
-        imageVector = if (isPasswordShowed) Icons.Outlined.Lock else Icons.Outlined.LockOpen,
-        tint = AppTheme.colors.secondaryText,
-        contentDescription = stringResource(
-            if (isPasswordShowed) Res.string.password_shown else Res.string.password_hidden
-        )
-    )
 }
