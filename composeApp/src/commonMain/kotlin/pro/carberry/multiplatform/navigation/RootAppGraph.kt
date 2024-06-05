@@ -15,12 +15,14 @@ import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
 import pro.carberry.multiplatform.features.auth.forgot.compose.ForgotPasswordScreen
 import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
 import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
+import pro.carberry.multiplatform.features.policy.privacy.PrivacyPolicyScreen
+import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
+import pro.carberry.multiplatform.features.policy.term.TermsOfServiceScreen
 import pro.carberry.multiplatform.features.splash.compose.SplashScreen
 import pro.carberry.multiplatform.theme.AppTheme
 
 @Composable
 fun RootAppGraph(navController: NavHostController = rememberNavController()) {
-
     CompositionLocalProvider(
         LocalRootNavHostController provides navController
     ) {
@@ -31,11 +33,11 @@ fun RootAppGraph(navController: NavHostController = rememberNavController()) {
         ) {
             composable(route = RootAppScreens.Splash.name) { SplashScreen() }
             authGraph()
+            policyGraph()
             composable(route = RootAppScreens.Main.name) { MainAppGraph() }
         }
     }
 }
-
 
 fun NavGraphBuilder.authGraph() {
     navigation(
@@ -45,5 +47,16 @@ fun NavGraphBuilder.authGraph() {
         composable(route = AuthAppScreens.Login.name) { LoginScreen() }
         composable(route = AuthAppScreens.ForgotPassword.name) { ForgotPasswordScreen() }
         composable(route = AuthAppScreens.ResetPassword.name) { ResetPasswordScreen() }
+    }
+}
+
+fun NavGraphBuilder.policyGraph() {
+    navigation(
+        startDestination = PolicyAppScreens.Privacy.name,
+        route = RootAppScreens.PolicyFlow.name
+    ) {
+        composable(route = PolicyAppScreens.Privacy.name) { PrivacyPolicyScreen() }
+        composable(route = PolicyAppScreens.Refund.name) { RefundPolicyScreen() }
+        composable(route = PolicyAppScreens.TermsOfService.name) { TermsOfServiceScreen() }
     }
 }

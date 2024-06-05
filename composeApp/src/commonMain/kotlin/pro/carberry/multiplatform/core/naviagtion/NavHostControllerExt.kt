@@ -1,12 +1,12 @@
 package pro.carberry.multiplatform.core.naviagtion
 
 import androidx.navigation.NavHostController
-import pro.carberry.multiplatform.navigation.RootAppScreens
+import pro.carberry.multiplatform.navigation.PolicyAppScreens
 
 fun NavHostController.navigateToRefundPolicy() {
-    navigate(RootAppScreens.RefundPolicy.name)
+    navigate(PolicyAppScreens.Refund.name)
 }
 
 fun NavHostController.navigateToTermsOfService() {
-    navigate(RootAppScreens.TermsOfService.name)
+    navigate(PolicyAppScreens.TermsOfService.name)
 }

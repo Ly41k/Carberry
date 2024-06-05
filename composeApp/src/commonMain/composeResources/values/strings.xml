@@ -8,6 +8,7 @@
     <string name="welcome_back_to_carberry">Welcome back to Carberry!</string>
     <string name="refund_policy">Refund policy</string>
     <string name="terms_of_service">Terms of service</string>
+    <string name="privacy_policy">Privacy policy</string>
     <string name="password_hidden">Password hidden</string>
     <string name="password_shown">Password shown</string>
     <string name="do_not_have_account">Don’t have account?</string>
@@ -17,4 +18,5 @@
     <string name="create_new_password">Create new password</string>
     <string name="new_password">New password</string>
     <string name="confirm_new_password">Confirm new password</string>
+    <string name="refund_description">You pay for the work that we do, not for the result of that labour. Any work we do or any time we spent must be paid for, for this reason not possible refund. Only if really solution not work then we can do for this order status "close" and then amount for this order will go on your account in our system for using it for next orders. You do not have the right to discuss our modifications made in the tuning file by us, otherwise the administrator has the right to block your account. If user selected wrong ECU in order, administrator will write about wrong selection in ticket for exact order and will notice about prices changes because of wrong ECU was selected. And if in selected priority time client not accepting that, admin have rights to finish order with correct selection orders options and prices.</string>
 </resources>
