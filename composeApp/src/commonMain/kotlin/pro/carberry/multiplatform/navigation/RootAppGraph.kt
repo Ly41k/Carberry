@@ -19,6 +19,16 @@ import pro.carberry.multiplatform.features.policy.privacy.PrivacyPolicyScreen
 import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
 import pro.carberry.multiplatform.features.policy.term.TermsOfServiceScreen
 import pro.carberry.multiplatform.features.splash.compose.SplashScreen
+import pro.carberry.multiplatform.navigation.AuthAppScreens.ForgotPassword
+import pro.carberry.multiplatform.navigation.AuthAppScreens.Login
+import pro.carberry.multiplatform.navigation.AuthAppScreens.ResetPassword
+import pro.carberry.multiplatform.navigation.PolicyAppScreens.Privacy
+import pro.carberry.multiplatform.navigation.PolicyAppScreens.Refund
+import pro.carberry.multiplatform.navigation.PolicyAppScreens.TermsOfService
+import pro.carberry.multiplatform.navigation.RootAppScreens.AuthFlow
+import pro.carberry.multiplatform.navigation.RootAppScreens.Main
+import pro.carberry.multiplatform.navigation.RootAppScreens.PolicyFlow
+import pro.carberry.multiplatform.navigation.RootAppScreens.Splash
 import pro.carberry.multiplatform.theme.AppTheme
 
 @Composable
@@ -29,34 +39,34 @@ fun RootAppGraph(navController: NavHostController = rememberNavController()) {
         NavHost(
             modifier = Modifier.fillMaxSize().background(AppTheme.colors.primaryBackground),
             navController = navController,
-            startDestination = RootAppScreens.Splash.name
+            startDestination = Splash.name
         ) {
-            composable(route = RootAppScreens.Splash.name) { SplashScreen() }
+            composable(route = Splash.name) { SplashScreen() }
             authGraph()
             policyGraph()
-            composable(route = RootAppScreens.Main.name) { MainAppGraph() }
+            composable(route = Main.name) { MainAppGraph() }
         }
     }
 }
 
 fun NavGraphBuilder.authGraph() {
     navigation(
-        startDestination = AuthAppScreens.Login.name,
-        route = RootAppScreens.AuthFlow.name
+        startDestination = Login.name,
+        route = AuthFlow.name
     ) {
-        composable(route = AuthAppScreens.Login.name) { LoginScreen() }
-        composable(route = AuthAppScreens.ForgotPassword.name) { ForgotPasswordScreen() }
-        composable(route = AuthAppScreens.ResetPassword.name) { ResetPasswordScreen() }
+        composable(route = Login.name) { LoginScreen() }
+        composable(route = ForgotPassword.name) { ForgotPasswordScreen() }
+        composable(route = ResetPassword.name) { ResetPasswordScreen() }
     }
 }
 
 fun NavGraphBuilder.policyGraph() {
     navigation(
-        startDestination = PolicyAppScreens.Privacy.name,
-        route = RootAppScreens.PolicyFlow.name
+        startDestination = Privacy.name,
+        route = PolicyFlow.name
     ) {
-        composable(route = PolicyAppScreens.Privacy.name) { PrivacyPolicyScreen() }
-        composable(route = PolicyAppScreens.Refund.name) { RefundPolicyScreen() }
-        composable(route = PolicyAppScreens.TermsOfService.name) { TermsOfServiceScreen() }
+        composable(route = Privacy.name) { PrivacyPolicyScreen() }
+        composable(route = Refund.name) { RefundPolicyScreen() }
+        composable(route = TermsOfService.name) { TermsOfServiceScreen() }
     }
 }

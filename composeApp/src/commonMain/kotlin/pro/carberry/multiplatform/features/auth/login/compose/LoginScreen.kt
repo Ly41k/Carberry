@@ -6,16 +6,19 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import pro.carberry.multiplatform.core.extensions.collectAsState
 import pro.carberry.multiplatform.core.extensions.observeAsState
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
-import pro.carberry.multiplatform.core.naviagtion.navigateToRefundPolicy
-import pro.carberry.multiplatform.core.naviagtion.navigateToTermsOfService
+import pro.carberry.multiplatform.core.naviagtion.navigateWithClearAction
+import pro.carberry.multiplatform.core.naviagtion.navigateWithPopBackStack
 import pro.carberry.multiplatform.features.auth.login.presentation.LoginViewModel
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenForgotPasswordScreen
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenMainFlow
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenRefundPolicy
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenRegistrationScreen
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenTermsOfService
-import pro.carberry.multiplatform.navigation.AuthAppScreens
-import pro.carberry.multiplatform.navigation.RootAppScreens
+import pro.carberry.multiplatform.navigation.AuthAppScreens.ForgotPassword
+import pro.carberry.multiplatform.navigation.AuthAppScreens.Register
+import pro.carberry.multiplatform.navigation.PolicyAppScreens.Refund
+import pro.carberry.multiplatform.navigation.PolicyAppScreens.TermsOfService
+import pro.carberry.multiplatform.navigation.RootAppScreens.Main
 
 @Composable
 fun LoginScreen(
@@ -29,28 +32,11 @@ fun LoginScreen(
     LoginView(state) { event -> viewModel.obtainEvent(event) }
 
     when (action) {
-        OpenForgotPasswordScreen -> {
-            navController.navigate(AuthAppScreens.ForgotPassword.name)
-            viewModel.clearAction()
-        }
-
-        OpenMainFlow -> {
-            navController.popBackStack()
-            navController.navigate(RootAppScreens.Main.name)
-        }
-
-        OpenRefundPolicy -> {
-            navController.navigateToRefundPolicy()
-        }
-
-        OpenRegistrationScreen -> {
-            navController.navigate(AuthAppScreens.Register.name)
-        }
-
-        OpenTermsOfService -> {
-            navController.navigateToTermsOfService()
-        }
-
+        OpenForgotPasswordScreen -> navController.navigateWithClearAction(ForgotPassword.name, viewModel::clearAction)
+        OpenMainFlow -> navController.navigateWithPopBackStack(Main.name)
+        OpenRefundPolicy -> navController.navigateWithClearAction(Refund.name, viewModel::clearAction)
+        OpenRegistrationScreen -> navController.navigate(Register.name)
+        OpenTermsOfService -> navController.navigateWithClearAction(TermsOfService.name, viewModel::clearAction)
         null -> {
             /* Do nothing*/
         }

@@ -1,12 +1,13 @@
 package pro.carberry.multiplatform.core.naviagtion
 
 import androidx.navigation.NavHostController
-import pro.carberry.multiplatform.navigation.PolicyAppScreens
 
-fun NavHostController.navigateToRefundPolicy() {
-    navigate(PolicyAppScreens.Refund.name)
+fun NavHostController.navigateWithClearAction(route: String, clearAction: () -> Unit) {
+    navigate(route)
+    clearAction.invoke()
 }
 
-fun NavHostController.navigateToTermsOfService() {
-    navigate(PolicyAppScreens.TermsOfService.name)
+fun NavHostController.navigateWithPopBackStack(route: String) {
+    popBackStack()
+    navigate(route)
 }

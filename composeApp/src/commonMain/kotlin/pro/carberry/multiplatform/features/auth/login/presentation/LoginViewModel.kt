@@ -2,6 +2,11 @@ package pro.carberry.multiplatform.features.auth.login.presentation
 
 import pro.carberry.multiplatform.core.presentation.BaseViewModel
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction
+import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenForgotPasswordScreen
+import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenMainFlow
+import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenRefundPolicy
+import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenRegistrationScreen
+import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginAction.OpenTermsOfService
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.EmailValueChanged
 import pro.carberry.multiplatform.features.auth.login.presentation.models.LoginEvent.ForgotPasswordClick
@@ -41,22 +46,22 @@ class LoginViewModel : BaseViewModel<LoginViewState, LoginAction, LoginEvent>(Lo
     }
 
     private fun openRegistration() {
-        viewAction = LoginAction.OpenRegistrationScreen
+        viewAction = OpenRegistrationScreen
     }
 
     private fun openForgotPassword() {
-        viewAction = LoginAction.OpenForgotPasswordScreen
+        viewAction = OpenForgotPasswordScreen
     }
 
     private fun sendLogin() {
-        viewAction = LoginAction.OpenMainFlow
+        viewAction = OpenMainFlow
     }
 
     private fun openRefundPolicy() {
-        viewAction = LoginAction.OpenRefundPolicy
+        viewAction = OpenRefundPolicy
     }
 
     private fun openTermsOfService() {
-        viewAction = LoginAction.OpenTermsOfService
+        viewAction = OpenTermsOfService
     }
 }

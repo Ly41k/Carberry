@@ -3,15 +3,16 @@ package pro.carberry.multiplatform.features.splash.compose
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import pro.carberry.multiplatform.core.extensions.observeAsState
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
+import pro.carberry.multiplatform.core.naviagtion.navigateWithPopBackStack
 import pro.carberry.multiplatform.features.splash.presentation.SplashViewModel
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenLoginScreen
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenMainScreen
 import pro.carberry.multiplatform.features.splash.presentation.models.SplashAction.OpenOnboardingScreen
-import pro.carberry.multiplatform.navigation.AuthAppScreens
-import pro.carberry.multiplatform.navigation.RootAppScreens
+import pro.carberry.multiplatform.navigation.AuthAppScreens.Login
+import pro.carberry.multiplatform.navigation.RootAppScreens.Main
+import pro.carberry.multiplatform.navigation.RootAppScreens.Onboarding
 
 @Composable
 fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
@@ -21,26 +22,11 @@ fun SplashScreen(viewModel: SplashViewModel = viewModel { SplashViewModel() }) {
     SplashView()
 
     when (viewAction) {
-        OpenLoginScreen -> navController.navigateToLogin()
-        OpenMainScreen -> navController.navigateToMain()
-        OpenOnboardingScreen -> navController.navigateToOnboarding()
+        OpenLoginScreen -> navController.navigateWithPopBackStack(Login.name)
+        OpenMainScreen -> navController.navigateWithPopBackStack(Main.name)
+        OpenOnboardingScreen -> navController.navigateWithPopBackStack(Onboarding.name)
         null -> {
             /* Do nothing*/
         }
     }
-}
-
-private fun NavHostController.navigateToLogin() {
-    popBackStack()
-    navigate(AuthAppScreens.Login.name)
-}
-
-private fun NavHostController.navigateToMain() {
-    popBackStack()
-    navigate(RootAppScreens.Main.name)
-}
-
-private fun NavHostController.navigateToOnboarding() {
-    popBackStack()
-    navigate(RootAppScreens.Onboarding.name)
 }
