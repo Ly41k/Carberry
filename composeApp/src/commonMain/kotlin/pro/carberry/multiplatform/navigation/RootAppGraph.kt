@@ -17,7 +17,7 @@ import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
 import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
 import pro.carberry.multiplatform.features.policy.privacy.PrivacyPolicyScreen
 import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
-import pro.carberry.multiplatform.features.policy.term.TermsOfServiceScreen
+import pro.carberry.multiplatform.features.policy.term.compose.TermsOfServiceScreen
 import pro.carberry.multiplatform.features.splash.compose.SplashScreen
 import pro.carberry.multiplatform.navigation.AuthAppScreens.ForgotPassword
 import pro.carberry.multiplatform.navigation.AuthAppScreens.Login
