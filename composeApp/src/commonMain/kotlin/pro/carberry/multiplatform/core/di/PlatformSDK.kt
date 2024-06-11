@@ -4,6 +4,7 @@ import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.direct
 import org.kodein.di.singleton
+import pro.carberry.multiplatform.di.appModule
 
 object PlatformSDK {
 
@@ -15,12 +16,6 @@ object PlatformSDK {
             }
         )
 
-        Inject.createDependencies(
-            DI {
-                importAll(
-                    coreModule,
-                )
-            }.direct
-        )
+        Inject.createDependencies(DI { importAll(coreModule, appModule) }.direct)
     }
 }

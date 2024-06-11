@@ -3,6 +3,7 @@ package pro.carberry.multiplatform.features.policy.term.compose
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import pro.carberry.multiplatform.core.extensions.collectAsState
 import pro.carberry.multiplatform.core.extensions.observeAsState
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
 import pro.carberry.multiplatform.core.naviagtion.navigateWithClearAction
@@ -14,14 +15,13 @@ import pro.carberry.multiplatform.navigation.PolicyAppScreens.Privacy
 import pro.carberry.multiplatform.navigation.PolicyAppScreens.Refund
 
 @Composable
-fun TermsOfServiceScreen(
-    viewModel: TermsOfServiceViewModel = viewModel { TermsOfServiceViewModel() }
-) {
+fun TermsOfServiceScreen(viewModel: TermsOfServiceViewModel = viewModel { TermsOfServiceViewModel() }) {
 
     val navController = LocalRootNavHostController.current
+    val state by viewModel.viewStates().collectAsState()
     val action by viewModel.viewActions().observeAsState()
 
-    TermsOfServiceView { event -> viewModel.obtainEvent(event) }
+    TermsOfServiceView(state) { event -> viewModel.obtainEvent(event) }
 
     when (action) {
         OpenPreviousScreen -> navController.popBackStack()
