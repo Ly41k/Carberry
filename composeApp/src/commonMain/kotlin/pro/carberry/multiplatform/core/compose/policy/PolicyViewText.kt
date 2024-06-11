@@ -1,4 +1,4 @@
-package pro.carberry.multiplatform.core.compose.text
+package pro.carberry.multiplatform.core.compose.policy
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -53,7 +53,7 @@ fun PolicyViewText(item: PolicyViewItem, isTitleUppercase: Boolean = false) {
 }
 
 @[Composable Stable]
-fun PolicyTitleText(title: String, style: TextStyle) {
+private fun PolicyTitleText(title: String, style: TextStyle) {
     Text(
         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
         text = title,

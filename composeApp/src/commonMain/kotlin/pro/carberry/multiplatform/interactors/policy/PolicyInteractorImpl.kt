@@ -15,4 +15,13 @@ class PolicyInteractorImpl(
         return flow { emit(policyRepository.getTermsOfServicePolicy()) }
             .map { it.map { model -> policyMapper.toTermsOfService(model) }.flatten() }
     }
+
+    override fun getRefundPolicy(): Flow<List<PolicyViewItem>> {
+        return flow { emit(policyRepository.getRefundPolicy()) }
+            .map { it.map { model -> policyMapper.toRefundPolicy(model) }.flatten() }
+    }
+
+    override fun getPrivacyPolicy(): Flow<List<PolicyViewItem>> {
+        TODO("Not yet implemented")
+    }
 }

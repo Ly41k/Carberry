@@ -20,10 +20,10 @@ import carberry.composeapp.generated.resources.Res
 import carberry.composeapp.generated.resources.privacy_policy
 import carberry.composeapp.generated.resources.refund_policy
 import carberry.composeapp.generated.resources.terms_of_service
-import pro.carberry.multiplatform.core.compose.text.PolicyViewText
+import pro.carberry.multiplatform.core.compose.policy.PolicyLinksView
+import pro.carberry.multiplatform.core.compose.policy.PolicyTitleView
+import pro.carberry.multiplatform.core.compose.policy.PolicyViewText
 import pro.carberry.multiplatform.core.compose.topbar.CarberryTopAppBar
-import pro.carberry.multiplatform.features.policy.refund.compose.PolicyLinksView
-import pro.carberry.multiplatform.features.policy.refund.compose.PolicyTitleView
 import pro.carberry.multiplatform.features.policy.term.presentation.models.TermsOfServiceEvent
 import pro.carberry.multiplatform.features.policy.term.presentation.models.TermsOfServiceViewState
 import pro.carberry.multiplatform.theme.AppTheme

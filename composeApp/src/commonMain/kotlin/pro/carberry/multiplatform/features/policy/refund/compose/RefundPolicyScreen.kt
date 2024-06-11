@@ -3,6 +3,7 @@ package pro.carberry.multiplatform.features.policy.refund.compose
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import pro.carberry.multiplatform.core.extensions.collectAsState
 import pro.carberry.multiplatform.core.extensions.observeAsState
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
 import pro.carberry.multiplatform.core.naviagtion.navigateWithClearAction
@@ -19,9 +20,10 @@ fun RefundPolicyScreen(
 ) {
 
     val navController = LocalRootNavHostController.current
+    val state by viewModel.viewStates().collectAsState()
     val action by viewModel.viewActions().observeAsState()
 
-    RefundPolicyView { event -> viewModel.obtainEvent(event) }
+    RefundPolicyView(state) { event -> viewModel.obtainEvent(event) }
 
     when (action) {
         OpenPreviousScreen -> navController.popBackStack()

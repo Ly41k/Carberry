@@ -1,6 +1,8 @@
 package pro.carberry.multiplatform.repositories.policy
 
 import carberry.composeapp.generated.resources.Res
+import carberry.composeapp.generated.resources.refund_description
+import carberry.composeapp.generated.resources.refund_policy
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms_description
 import carberry.composeapp.generated.resources.terms_of_service_overview
@@ -15,6 +17,14 @@ class PolicyRepositoryImpl : PolicyRepository {
 
     override suspend fun getTermsOfServicePolicy(): List<PolicyModel> {
         return getRemoteTermsOfService() ?: getLocalTermsOfService()
+    }
+
+    override suspend fun getRefundPolicy(): List<PolicyModel> {
+        return getRemoteRefundPolicy() ?: getLocalRefundPolicy()
+    }
+
+    override suspend fun getPrivacyPolicy(): List<PolicyModel> {
+        TODO("Not yet implemented")
     }
 
     private suspend fun getLocalTermsOfService(): List<PolicyModel> {
@@ -34,6 +44,24 @@ class PolicyRepositoryImpl : PolicyRepository {
             return@withContext null
         }
     }
+
+    private suspend fun getLocalRefundPolicy(): List<PolicyModel> {
+        // TODO Need to use custom Coroutine Dispatcher
+        return withContext(Dispatchers.Default) {
+            return@withContext buildList {
+                add(LocalPolicyModel(Res.string.refund_policy, Res.string.refund_description))
+            }
+        }
+    }
+
+    private suspend fun getRemoteRefundPolicy(): List<PolicyModel>? {
+        // TODO Need to use custom Coroutine Dispatcher
+        return withContext(Dispatchers.IO) {
+            // TODO Will be implemented in the future
+            return@withContext null
+        }
+    }
+
 
     private fun getLocalTermsOfServiceOverview(): LocalPolicyModel {
         return LocalPolicyModel(
