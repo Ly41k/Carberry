@@ -3,6 +3,10 @@ package pro.carberry.multiplatform.repositories.policy
 import carberry.composeapp.generated.resources.Res
 import carberry.composeapp.generated.resources.refund_description
 import carberry.composeapp.generated.resources.refund_policy
+import carberry.composeapp.generated.resources.terms_of_service_accuracy
+import carberry.composeapp.generated.resources.terms_of_service_accuracy_description
+import carberry.composeapp.generated.resources.terms_of_service_general_conditions
+import carberry.composeapp.generated.resources.terms_of_service_general_conditions_description
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms_description
 import carberry.composeapp.generated.resources.terms_of_service_overview
@@ -34,6 +38,8 @@ class PolicyRepositoryImpl(
             return@withContext buildList {
                 add(getLocalTermsOfServiceOverview())
                 add(getLocalTermsOfServiceOnlineStoreTerms())
+                add(getLocalTermsOfServiceGeneralConditions())
+                add(getLocalTermsOfServiceAccuracy())
             }
         }
     }
@@ -72,6 +78,20 @@ class PolicyRepositoryImpl(
         return LocalPolicyModel(
             title = Res.string.terms_of_service_online_store_terms,
             description = Res.string.terms_of_service_online_store_terms_description
+        )
+    }
+
+    private fun getLocalTermsOfServiceGeneralConditions(): LocalPolicyModel {
+        return LocalPolicyModel(
+            title = Res.string.terms_of_service_general_conditions,
+            description = Res.string.terms_of_service_general_conditions_description
+        )
+    }
+
+    private fun getLocalTermsOfServiceAccuracy(): LocalPolicyModel {
+        return LocalPolicyModel(
+            title = Res.string.terms_of_service_accuracy,
+            description = Res.string.terms_of_service_accuracy_description
         )
     }
 }
