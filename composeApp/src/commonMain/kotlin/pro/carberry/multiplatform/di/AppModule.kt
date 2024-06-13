@@ -10,6 +10,6 @@ val appModule = DI.Module("appModule") {
     bind<ExceptionService>() with singleton { DefaultExceptionService() }
 
     importAll(
-        repositoryModule, interactorModule, mapperModule
+        repositoryModule, interactorModule, mapperModule, coroutineModule
     )
 }

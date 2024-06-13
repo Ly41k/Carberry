@@ -7,13 +7,15 @@ import carberry.composeapp.generated.resources.terms_of_service_online_store_ter
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms_description
 import carberry.composeapp.generated.resources.terms_of_service_overview
 import carberry.composeapp.generated.resources.terms_of_service_overview_description
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
 import pro.carberry.multiplatform.repositories.policy.models.PolicyModel
 
-class PolicyRepositoryImpl : PolicyRepository {
+class PolicyRepositoryImpl(
+    private val defaultDispatcher: CoroutineDispatcher,
+    private val ioDispatcher: CoroutineDispatcher
+) : PolicyRepository {
 
     override suspend fun getTermsOfServicePolicy(): List<PolicyModel> {
         return getRemoteTermsOfService() ?: getLocalTermsOfService()
@@ -28,8 +30,7 @@ class PolicyRepositoryImpl : PolicyRepository {
     }
 
     private suspend fun getLocalTermsOfService(): List<PolicyModel> {
-        // TODO Need to use custom Coroutine Dispatcher
-        return withContext(Dispatchers.Default) {
+        return withContext(defaultDispatcher) {
             return@withContext buildList {
                 add(getLocalTermsOfServiceOverview())
                 add(getLocalTermsOfServiceOnlineStoreTerms())
@@ -38,16 +39,14 @@ class PolicyRepositoryImpl : PolicyRepository {
     }
 
     private suspend fun getRemoteTermsOfService(): List<PolicyModel>? {
-        // TODO Need to use custom Coroutine Dispatcher
-        return withContext(Dispatchers.IO) {
+        return withContext(ioDispatcher) {
             // TODO Will be implemented in the future
             return@withContext null
         }
     }
 
     private suspend fun getLocalRefundPolicy(): List<PolicyModel> {
-        // TODO Need to use custom Coroutine Dispatcher
-        return withContext(Dispatchers.Default) {
+        return withContext(defaultDispatcher) {
             return@withContext buildList {
                 add(LocalPolicyModel(Res.string.refund_policy, Res.string.refund_description))
             }
@@ -55,8 +54,7 @@ class PolicyRepositoryImpl : PolicyRepository {
     }
 
     private suspend fun getRemoteRefundPolicy(): List<PolicyModel>? {
-        // TODO Need to use custom Coroutine Dispatcher
-        return withContext(Dispatchers.IO) {
+        return withContext(ioDispatcher) {
             // TODO Will be implemented in the future
             return@withContext null
         }
