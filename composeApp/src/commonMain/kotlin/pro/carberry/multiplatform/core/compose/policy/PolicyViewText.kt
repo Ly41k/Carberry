@@ -29,7 +29,8 @@ import pro.carberry.multiplatform.theme.AppTheme.typography
 fun PolicyViewText(item: PolicyViewItem, isTitleUppercase: Boolean = false) {
     when (item) {
         is PolicyDescription -> PolicyDescriptionText(item.value)
-        is PolicyDescriptionRes -> PolicyDescriptionText(stringResource(item.value))
+        is PolicyDescriptionRes -> item.value.map { PolicyDescriptionText(stringResource(it)) }
+
         is PolicyListItem -> PolicyDescriptionText(item.value, true)
         is PolicyListItemRes -> PolicyDescriptionText(stringResource(item.value), true)
         is PolicyLargeTitle ->

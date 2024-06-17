@@ -23,12 +23,12 @@ class PolicyMapperImpl(
         return when (model) {
             is LocalPolicyModel -> buildList {
                 add(PolicySmallTitleRes(model.title))
-                add(PolicyDescriptionRes(model.description))
+                add(PolicyDescriptionRes(model.descriptions))
             }
 
             is RemotePolicyModel -> buildList {
                 add(PolicySmallTitle(model.title))
-                add(PolicyDescription(model.description))
+                add(PolicyDescription(model.descriptions))
             }
 
             else -> {
@@ -40,8 +40,8 @@ class PolicyMapperImpl(
 
     override fun toRefundPolicy(model: PolicyModel): List<PolicyViewItem> {
         return when (model) {
-            is LocalPolicyModel -> buildList { add(PolicyDescriptionRes(model.description)) }
-            is RemotePolicyModel -> buildList { add(PolicyDescription(model.description)) }
+            is LocalPolicyModel -> buildList { add(PolicyDescriptionRes(model.descriptions)) }
+            is RemotePolicyModel -> buildList { add(PolicyDescription(model.descriptions)) }
 
             else -> {
                 exceptionService.logException(UnsupportedOperationException("Unsupported policy type"))

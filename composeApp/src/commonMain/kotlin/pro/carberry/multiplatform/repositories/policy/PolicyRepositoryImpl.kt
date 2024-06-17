@@ -7,6 +7,8 @@ import carberry.composeapp.generated.resources.terms_of_service_accuracy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy_description
 import carberry.composeapp.generated.resources.terms_of_service_general_conditions
 import carberry.composeapp.generated.resources.terms_of_service_general_conditions_description
+import carberry.composeapp.generated.resources.terms_of_service_modifications
+import carberry.composeapp.generated.resources.terms_of_service_modifications_description
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms_description
 import carberry.composeapp.generated.resources.terms_of_service_overview
@@ -40,6 +42,7 @@ class PolicyRepositoryImpl(
                 add(getLocalTermsOfServiceOnlineStoreTerms())
                 add(getLocalTermsOfServiceGeneralConditions())
                 add(getLocalTermsOfServiceAccuracy())
+                add(getLocalTermsOfServiceModifications())
             }
         }
     }
@@ -54,7 +57,12 @@ class PolicyRepositoryImpl(
     private suspend fun getLocalRefundPolicy(): List<PolicyModel> {
         return withContext(defaultDispatcher) {
             return@withContext buildList {
-                add(LocalPolicyModel(Res.string.refund_policy, Res.string.refund_description))
+                add(
+                    LocalPolicyModel(
+                        title = Res.string.refund_policy,
+                        descriptions = buildList { add(Res.string.refund_description) }
+                    )
+                )
             }
         }
     }
@@ -70,28 +78,38 @@ class PolicyRepositoryImpl(
     private fun getLocalTermsOfServiceOverview(): LocalPolicyModel {
         return LocalPolicyModel(
             title = Res.string.terms_of_service_overview,
-            description = Res.string.terms_of_service_overview_description
+            descriptions = buildList { add(Res.string.terms_of_service_overview_description) }
         )
     }
 
     private fun getLocalTermsOfServiceOnlineStoreTerms(): LocalPolicyModel {
         return LocalPolicyModel(
             title = Res.string.terms_of_service_online_store_terms,
-            description = Res.string.terms_of_service_online_store_terms_description
+            descriptions = buildList { add(Res.string.terms_of_service_online_store_terms_description) }
         )
     }
 
     private fun getLocalTermsOfServiceGeneralConditions(): LocalPolicyModel {
         return LocalPolicyModel(
             title = Res.string.terms_of_service_general_conditions,
-            description = Res.string.terms_of_service_general_conditions_description
+            descriptions = buildList { add(Res.string.terms_of_service_general_conditions_description) }
         )
     }
 
     private fun getLocalTermsOfServiceAccuracy(): LocalPolicyModel {
         return LocalPolicyModel(
             title = Res.string.terms_of_service_accuracy,
-            description = Res.string.terms_of_service_accuracy_description
+            descriptions = buildList { add(Res.string.terms_of_service_accuracy_description) }
+        )
+    }
+
+    private fun getLocalTermsOfServiceModifications(): LocalPolicyModel {
+        return LocalPolicyModel(
+            title = Res.string.terms_of_service_modifications,
+            descriptions = buildList {
+                add(Res.string.terms_of_service_modifications_description)
+                add(Res.string.refund_description)
+            }
         )
     }
 }
