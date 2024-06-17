@@ -13,6 +13,8 @@ import carberry.composeapp.generated.resources.terms_of_service_online_store_ter
 import carberry.composeapp.generated.resources.terms_of_service_online_store_terms_description
 import carberry.composeapp.generated.resources.terms_of_service_overview
 import carberry.composeapp.generated.resources.terms_of_service_overview_description
+import carberry.composeapp.generated.resources.terms_of_service_products
+import carberry.composeapp.generated.resources.terms_of_service_products_description
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
@@ -43,6 +45,7 @@ class PolicyRepositoryImpl(
                 add(getLocalTermsOfServiceGeneralConditions())
                 add(getLocalTermsOfServiceAccuracy())
                 add(getLocalTermsOfServiceModifications())
+                add(getLocalTermsOfServiceProducts())
             }
         }
     }
@@ -110,6 +113,13 @@ class PolicyRepositoryImpl(
                 add(Res.string.terms_of_service_modifications_description)
                 add(Res.string.refund_description)
             }
+        )
+    }
+
+    private fun getLocalTermsOfServiceProducts(): LocalPolicyModel {
+        return LocalPolicyModel(
+            title = Res.string.terms_of_service_products,
+            descriptions = buildList { add(Res.string.terms_of_service_products_description) }
         )
     }
 }
