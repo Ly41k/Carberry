@@ -10,7 +10,7 @@ sealed class PolicyViewItem(open val value: Any) {
     data class PolicySmallTitle(override val value: String) : PolicyViewItem(value)
     data class PolicySmallTitleRes(override val value: StringResource) : PolicyViewItem(value)
     data class PolicyDescription(override val value: String) : PolicyViewItem(value)
-    data class PolicyDescriptionRes(override val value: List<StringResource>) : PolicyViewItem(value)
+    data class PolicyDescriptionRes(override val value: StringResource) : PolicyViewItem(value)
     data class PolicyListItem(override val value: String) : PolicyViewItem(value)
     data class PolicyListItemRes(override val value: StringResource) : PolicyViewItem(value)
 }

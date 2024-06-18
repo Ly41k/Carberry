@@ -11,5 +11,15 @@ data class RemotePolicyModel(
 
 data class LocalPolicyModel(
     override val title: StringResource,
-    override val descriptions: List<StringResource>
-) : PolicyModel(title, descriptions)
+    override val descriptions: List<Description>
+) : PolicyModel(title, descriptions) {
+
+    data class Description(
+        val description: StringResource,
+        val offset: Boolean = false
+    )
+}
+
+fun StringResource.toDescription(offset: Boolean = false): LocalPolicyModel.Description {
+    return LocalPolicyModel.Description(this, offset)
+}

@@ -29,8 +29,7 @@ import pro.carberry.multiplatform.theme.AppTheme.typography
 fun PolicyViewText(item: PolicyViewItem, isTitleUppercase: Boolean = false) {
     when (item) {
         is PolicyDescription -> PolicyDescriptionText(item.value)
-        is PolicyDescriptionRes -> item.value.map { PolicyDescriptionText(stringResource(it)) }
-
+        is PolicyDescriptionRes -> PolicyDescriptionText(stringResource(item.value))
         is PolicyListItem -> PolicyDescriptionText(item.value, true)
         is PolicyListItemRes -> PolicyDescriptionText(stringResource(item.value), true)
         is PolicyLargeTitle ->
@@ -59,7 +58,7 @@ private fun PolicyTitleText(title: String, style: TextStyle) {
         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
         text = title,
         style = style,
-        textAlign = TextAlign.Justify,
+        textAlign = TextAlign.Start,
         color = colors.primaryText
     )
 }
