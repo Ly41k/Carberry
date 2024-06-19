@@ -5,6 +5,8 @@ import carberry.composeapp.generated.resources.refund_description
 import carberry.composeapp.generated.resources.refund_policy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy_description
+import carberry.composeapp.generated.resources.terms_of_service_disclaimer_of_warranties
+import carberry.composeapp.generated.resources.terms_of_service_disclaimer_of_warranties_description
 import carberry.composeapp.generated.resources.terms_of_service_general_conditions
 import carberry.composeapp.generated.resources.terms_of_service_general_conditions_description
 import carberry.composeapp.generated.resources.terms_of_service_modifications
@@ -40,29 +42,26 @@ class PolicyRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher
 ) : PolicyRepository {
 
-    override suspend fun getTermsOfServicePolicy(): List<PolicyModel> {
-        return getRemoteTermsOfService() ?: getLocalTermsOfService()
-    }
+    override suspend fun getTermsOfServicePolicy(): List<PolicyModel> =
+        getRemoteTermsOfService() ?: getLocalTermsOfService()
 
-    override suspend fun getRefundPolicy(): List<PolicyModel> {
-        return getRemoteRefundPolicy() ?: getLocalRefundPolicy()
-    }
+    override suspend fun getRefundPolicy(): List<PolicyModel> =
+        getRemoteRefundPolicy() ?: getLocalRefundPolicy()
 
     override suspend fun getPrivacyPolicy(): List<PolicyModel> {
         TODO("Not yet implemented")
     }
 
-    private suspend fun getLocalTermsOfService(): List<PolicyModel> {
-        return withContext(defaultDispatcher) {
-            return@withContext buildList {
-                add(getLocalTermsOfServiceOverview())
-                add(getLocalTermsOfServiceOnlineStoreTerms())
-                add(getLocalTermsOfServiceGeneralConditions())
-                add(getLocalTermsOfServiceAccuracy())
-                add(getLocalTermsOfServiceModifications())
-                add(getLocalTermsOfServiceProducts())
-                add(getLocalTermsOfServiceProhibitedUses())
-            }
+    private suspend fun getLocalTermsOfService(): List<PolicyModel> = withContext(defaultDispatcher) {
+        return@withContext buildList {
+            add(getLocalTermsOfServiceOverview())
+            add(getLocalTermsOfServiceOnlineStoreTerms())
+            add(getLocalTermsOfServiceGeneralConditions())
+            add(getLocalTermsOfServiceAccuracy())
+            add(getLocalTermsOfServiceModifications())
+            add(getLocalTermsOfServiceProducts())
+            add(getLocalTermsOfServiceProhibitedUses())
+            add(getLocalTermsOfServiceDisclaimerOfWarranties())
         }
     }
 
@@ -94,69 +93,62 @@ class PolicyRepositoryImpl(
     }
 
 
-    private fun getLocalTermsOfServiceOverview(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_overview,
-            descriptions = buildList { add(Res.string.terms_of_service_overview_description.toDescription()) }
-        )
-    }
+    private fun getLocalTermsOfServiceOverview(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_overview,
+        descriptions = buildList { add(Res.string.terms_of_service_overview_description.toDescription()) }
+    )
 
-    private fun getLocalTermsOfServiceOnlineStoreTerms(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_online_store_terms,
-            descriptions = buildList { add(Res.string.terms_of_service_online_store_terms_description.toDescription()) }
-        )
-    }
+    private fun getLocalTermsOfServiceOnlineStoreTerms(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_online_store_terms,
+        descriptions = buildList { add(Res.string.terms_of_service_online_store_terms_description.toDescription()) }
+    )
 
-    private fun getLocalTermsOfServiceGeneralConditions(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_general_conditions,
-            descriptions = buildList { add(Res.string.terms_of_service_general_conditions_description.toDescription()) }
-        )
-    }
+    private fun getLocalTermsOfServiceGeneralConditions(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_general_conditions,
+        descriptions = buildList { add(Res.string.terms_of_service_general_conditions_description.toDescription()) }
+    )
 
-    private fun getLocalTermsOfServiceAccuracy(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_accuracy,
-            descriptions = buildList { add(Res.string.terms_of_service_accuracy_description.toDescription()) }
-        )
-    }
+    private fun getLocalTermsOfServiceAccuracy(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_accuracy,
+        descriptions = buildList { add(Res.string.terms_of_service_accuracy_description.toDescription()) }
+    )
 
-    private fun getLocalTermsOfServiceModifications(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_modifications,
-            descriptions = buildList {
-                add(Res.string.terms_of_service_modifications_description.toDescription())
-                add(Res.string.refund_description.toDescription())
-            }
-        )
-    }
+    private fun getLocalTermsOfServiceModifications(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_modifications,
+        descriptions = buildList {
+            add(Res.string.terms_of_service_modifications_description.toDescription())
+            add(Res.string.refund_description.toDescription())
+        }
+    )
 
-    private fun getLocalTermsOfServiceProducts(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_products,
-            descriptions = buildList { add(Res.string.terms_of_service_products_description.toDescription()) }
-        )
-    }
+    private fun getLocalTermsOfServiceProducts(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_products,
+        descriptions = buildList { add(Res.string.terms_of_service_products_description.toDescription()) }
+    )
 
-    private fun getLocalTermsOfServiceProhibitedUses(): LocalPolicyModel {
-        return LocalPolicyModel(
-            title = Res.string.terms_of_service_prohibited_uses,
-            descriptions = buildList {
-                add(Res.string.terms_of_service_prohibited_uses_description.toDescription())
-                add(Res.string.terms_of_service_prohibited_uses_description_a.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_b.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_c.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_d.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_e.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_f.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_g.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_h.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_i.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_j.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_k.toDescription(true))
-                add(Res.string.terms_of_service_prohibited_uses_description_summary.toDescription())
-            }
-        )
-    }
+    private fun getLocalTermsOfServiceProhibitedUses(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_prohibited_uses,
+        descriptions = buildList {
+            add(Res.string.terms_of_service_prohibited_uses_description.toDescription())
+            add(Res.string.terms_of_service_prohibited_uses_description_a.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_b.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_c.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_d.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_e.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_f.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_g.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_h.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_i.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_j.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_k.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_summary.toDescription())
+        }
+    )
+
+    private fun getLocalTermsOfServiceDisclaimerOfWarranties(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_disclaimer_of_warranties,
+        descriptions = buildList {
+            add(Res.string.terms_of_service_disclaimer_of_warranties_description.toDescription())
+        }
+    )
 }

@@ -45,4 +45,6 @@
     <string name="terms_of_service_prohibited_uses_description_j">(j) for any obscene or immoral purpose; or</string>
     <string name="terms_of_service_prohibited_uses_description_k">(k) to interfere with or circumvent the security features of the Service or any related application, other applications.</string>
     <string name="terms_of_service_prohibited_uses_description_summary">We reserve the right to terminate your use of the Service for violating any of the prohibited uses.</string>
+    <string name="terms_of_service_disclaimer_of_warranties">7 - Disclaimer of warranties; Limitation of Liability</string>
+    <string name="terms_of_service_disclaimer_of_warranties_description">We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free.\nWe do not warrant that the results that may be obtained from the use of the service will be accurate or reliable.\nYou agree that from time to time we may remove the service for indefinite periods of time or cancel the service at any time, without notice to you.</string>
 </resources>
