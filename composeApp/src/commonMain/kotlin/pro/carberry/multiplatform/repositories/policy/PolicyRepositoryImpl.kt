@@ -5,6 +5,8 @@ import carberry.composeapp.generated.resources.refund_description
 import carberry.composeapp.generated.resources.refund_policy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy_description
+import carberry.composeapp.generated.resources.terms_of_service_contact_information
+import carberry.composeapp.generated.resources.terms_of_service_contact_information_description
 import carberry.composeapp.generated.resources.terms_of_service_disclaimer_of_warranties
 import carberry.composeapp.generated.resources.terms_of_service_disclaimer_of_warranties_description
 import carberry.composeapp.generated.resources.terms_of_service_general_conditions
@@ -31,6 +33,7 @@ import carberry.composeapp.generated.resources.terms_of_service_prohibited_uses_
 import carberry.composeapp.generated.resources.terms_of_service_prohibited_uses_description_j
 import carberry.composeapp.generated.resources.terms_of_service_prohibited_uses_description_k
 import carberry.composeapp.generated.resources.terms_of_service_prohibited_uses_description_summary
+import carberry.composeapp.generated.resources.terms_of_service_refund_policy
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
@@ -62,6 +65,8 @@ class PolicyRepositoryImpl(
             add(getLocalTermsOfServiceProducts())
             add(getLocalTermsOfServiceProhibitedUses())
             add(getLocalTermsOfServiceDisclaimerOfWarranties())
+            add(getLocalTermsOfServiceRefundPolicy())
+            add(getLocalTermsOfServiceContactInformation())
         }
     }
 
@@ -151,4 +156,20 @@ class PolicyRepositoryImpl(
             add(Res.string.terms_of_service_disclaimer_of_warranties_description.toDescription())
         }
     )
+
+    private fun getLocalTermsOfServiceRefundPolicy(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_refund_policy,
+        descriptions = buildList {
+            add(Res.string.refund_description.toDescription())
+        }
+    )
+
+    private fun getLocalTermsOfServiceContactInformation(): LocalPolicyModel {
+        return LocalPolicyModel(
+            title = Res.string.terms_of_service_contact_information,
+            descriptions = buildList {
+                add(Res.string.terms_of_service_contact_information_description.toDescription())
+            }
+        )
+    }
 }
