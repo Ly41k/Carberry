@@ -1,8 +1,10 @@
 package pro.carberry.multiplatform.repositories.policy
 
 import carberry.composeapp.generated.resources.Res
+import carberry.composeapp.generated.resources.privacy_overview_collect
+import carberry.composeapp.generated.resources.privacy_overview_date
+import carberry.composeapp.generated.resources.privacy_overview_describe
 import carberry.composeapp.generated.resources.refund_description
-import carberry.composeapp.generated.resources.refund_policy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy
 import carberry.composeapp.generated.resources.terms_of_service_accuracy_description
 import carberry.composeapp.generated.resources.terms_of_service_contact_information
@@ -53,9 +55,8 @@ class PolicyRepositoryImpl(
     override suspend fun getRefundPolicy(): List<PolicyModel> =
         getRemoteRefundPolicy() ?: getLocalRefundPolicy()
 
-    override suspend fun getPrivacyPolicy(): List<PolicyModel> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getPrivacyPolicy(): List<PolicyModel> =
+        getRemotePrivacyPolicy() ?: getLocalPrivacyPolicy()
 
     private suspend fun getLocalTermsOfService(): List<PolicyModel> = withContext(defaultDispatcher) {
         return@withContext buildList {
@@ -82,12 +83,7 @@ class PolicyRepositoryImpl(
     private suspend fun getLocalRefundPolicy(): List<PolicyModel> {
         return withContext(defaultDispatcher) {
             return@withContext buildList {
-                add(
-                    LocalPolicyModel(
-                        title = Res.string.refund_policy.mapToString(),
-                        descriptions = buildList { add(Res.string.refund_description.toDescription()) }
-                    )
-                )
+                add(LocalPolicyModel(descriptions = buildList { add(Res.string.refund_description.toDescription()) }))
             }
         }
     }
@@ -99,6 +95,20 @@ class PolicyRepositoryImpl(
         }
     }
 
+    private suspend fun getRemotePrivacyPolicy(): List<PolicyModel>? {
+        return withContext(ioDispatcher) {
+            // TODO Will be implemented in the future
+            return@withContext null
+        }
+    }
+
+    private suspend fun getLocalPrivacyPolicy(): List<PolicyModel> {
+        return withContext(defaultDispatcher) {
+            return@withContext buildList {
+                add(getLocalPrivacyOverview())
+            }
+        }
+    }
 
     private suspend fun getLocalTermsOfServiceOverview(): LocalPolicyModel = LocalPolicyModel(
         title = Res.string.terms_of_service_overview.mapToString(),
@@ -175,6 +185,16 @@ class PolicyRepositoryImpl(
                         args = CONTACT_EMAIL, isClickable = true
                     )
                 )
+            }
+        )
+    }
+
+    private suspend fun getLocalPrivacyOverview(): LocalPolicyModel {
+        return LocalPolicyModel(
+            descriptions = buildList {
+                add(Res.string.privacy_overview_date.toDescription())
+                add(Res.string.privacy_overview_describe.toDescription())
+                add(Res.string.privacy_overview_collect.toDescription())
             }
         )
     }

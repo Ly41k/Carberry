@@ -50,4 +50,7 @@
     <string name="terms_of_service_refund_policy">8 - Refund policy</string>
     <string name="terms_of_service_contact_information">9 - Contact information</string>
     <string name="terms_of_service_contact_information_description">Questions about the Terms of Service should be sent to %1$s</string>
+    <string name="privacy_overview_date">Last updated: June 20, 2024</string>
+    <string name="privacy_overview_describe">This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</string>
+    <string name="privacy_overview_collect">We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy is maintained by the Free Privacy Policy Generator.  We respect and are committed to protecting your privacy.  We do not sell or pass along your personal information to anyone.  Name, address and other identifying information that you provide is used by Carberry, your credit card information is not retained as the result of any of these processes.</string>
 </resources>

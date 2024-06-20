@@ -22,6 +22,7 @@ class PolicyInteractorImpl(
     }
 
     override fun getPrivacyPolicy(): Flow<List<PolicyViewItem>> {
-        TODO("Not yet implemented")
+        return flow { emit(policyRepository.getPrivacyPolicy()) }
+            .map { it.map { model -> policyMapper.toPrivacyPolicy(model) }.flatten() }
     }
 }

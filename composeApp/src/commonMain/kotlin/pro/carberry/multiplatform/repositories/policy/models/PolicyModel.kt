@@ -11,7 +11,7 @@ data class RemotePolicyModel(
 ) : PolicyModel(title, descriptions)
 
 data class LocalPolicyModel(
-    override val title: String,
+    override val title: String = "",
     override val descriptions: List<Description>
 ) : PolicyModel(title, descriptions) {
 

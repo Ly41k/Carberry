@@ -14,6 +14,7 @@ import pro.carberry.multiplatform.repositories.policy.models.RemotePolicyModel
 interface PolicyMapper {
     fun toTermsOfService(model: PolicyModel): List<PolicyViewItem>
     fun toRefundPolicy(model: PolicyModel): List<PolicyViewItem>
+    fun toPrivacyPolicy(model: PolicyModel): List<PolicyViewItem>
 }
 
 class PolicyMapperImpl(
@@ -41,9 +42,31 @@ class PolicyMapperImpl(
 
     override fun toRefundPolicy(model: PolicyModel): List<PolicyViewItem> {
         return when (model) {
-            is LocalPolicyModel -> buildList { addAll(model.descriptions.map { PolicyDescription(it.description) }) }
+            is LocalPolicyModel -> buildList {
+                if (model.title.isNotBlank()) add(PolicySmallTitle(model.title))
+                addAll(model.descriptions.map { PolicyDescription(it.description) })
+            }
 
             is RemotePolicyModel -> buildList { add(PolicyDescription(model.descriptions)) }
+
+            else -> {
+                exceptionService.logException(UnsupportedOperationException("Unsupported policy type"))
+                emptyList()
+            }
+        }
+    }
+
+    override fun toPrivacyPolicy(model: PolicyModel): List<PolicyViewItem> {
+        return when (model) {
+            is LocalPolicyModel -> buildList {
+                if (model.title.isNotBlank()) add(PolicySmallTitle(model.title))
+                addAll(model.descriptions.map { it.toPolicyViewItem() })
+            }
+
+            is RemotePolicyModel -> buildList {
+                add(PolicySmallTitle(model.title))
+                add(PolicyDescription(model.descriptions))
+            }
 
             else -> {
                 exceptionService.logException(UnsupportedOperationException("Unsupported policy type"))
