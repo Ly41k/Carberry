@@ -36,8 +36,10 @@ import carberry.composeapp.generated.resources.terms_of_service_prohibited_uses_
 import carberry.composeapp.generated.resources.terms_of_service_refund_policy
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import pro.carberry.multiplatform.core.utils.Constants.CONTACT_EMAIL
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
 import pro.carberry.multiplatform.repositories.policy.models.PolicyModel
+import pro.carberry.multiplatform.repositories.policy.models.mapToString
 import pro.carberry.multiplatform.repositories.policy.models.toDescription
 
 class PolicyRepositoryImpl(
@@ -82,7 +84,7 @@ class PolicyRepositoryImpl(
             return@withContext buildList {
                 add(
                     LocalPolicyModel(
-                        title = Res.string.refund_policy,
+                        title = Res.string.refund_policy.mapToString(),
                         descriptions = buildList { add(Res.string.refund_description.toDescription()) }
                     )
                 )
@@ -98,41 +100,41 @@ class PolicyRepositoryImpl(
     }
 
 
-    private fun getLocalTermsOfServiceOverview(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_overview,
+    private suspend fun getLocalTermsOfServiceOverview(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_overview.mapToString(),
         descriptions = buildList { add(Res.string.terms_of_service_overview_description.toDescription()) }
     )
 
-    private fun getLocalTermsOfServiceOnlineStoreTerms(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_online_store_terms,
+    private suspend fun getLocalTermsOfServiceOnlineStoreTerms(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_online_store_terms.mapToString(),
         descriptions = buildList { add(Res.string.terms_of_service_online_store_terms_description.toDescription()) }
     )
 
-    private fun getLocalTermsOfServiceGeneralConditions(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_general_conditions,
+    private suspend fun getLocalTermsOfServiceGeneralConditions(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_general_conditions.mapToString(),
         descriptions = buildList { add(Res.string.terms_of_service_general_conditions_description.toDescription()) }
     )
 
-    private fun getLocalTermsOfServiceAccuracy(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_accuracy,
+    private suspend fun getLocalTermsOfServiceAccuracy(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_accuracy.mapToString(),
         descriptions = buildList { add(Res.string.terms_of_service_accuracy_description.toDescription()) }
     )
 
-    private fun getLocalTermsOfServiceModifications(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_modifications,
+    private suspend fun getLocalTermsOfServiceModifications(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_modifications.mapToString(),
         descriptions = buildList {
             add(Res.string.terms_of_service_modifications_description.toDescription())
             add(Res.string.refund_description.toDescription())
         }
     )
 
-    private fun getLocalTermsOfServiceProducts(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_products,
+    private suspend fun getLocalTermsOfServiceProducts(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_products.mapToString(),
         descriptions = buildList { add(Res.string.terms_of_service_products_description.toDescription()) }
     )
 
-    private fun getLocalTermsOfServiceProhibitedUses(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_prohibited_uses,
+    private suspend fun getLocalTermsOfServiceProhibitedUses(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_prohibited_uses.mapToString(),
         descriptions = buildList {
             add(Res.string.terms_of_service_prohibited_uses_description.toDescription())
             add(Res.string.terms_of_service_prohibited_uses_description_a.toDescription(true))
@@ -150,25 +152,26 @@ class PolicyRepositoryImpl(
         }
     )
 
-    private fun getLocalTermsOfServiceDisclaimerOfWarranties(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_disclaimer_of_warranties,
+    private suspend fun getLocalTermsOfServiceDisclaimerOfWarranties(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_disclaimer_of_warranties.mapToString(),
         descriptions = buildList {
             add(Res.string.terms_of_service_disclaimer_of_warranties_description.toDescription())
         }
     )
 
-    private fun getLocalTermsOfServiceRefundPolicy(): LocalPolicyModel = LocalPolicyModel(
-        title = Res.string.terms_of_service_refund_policy,
+    private suspend fun getLocalTermsOfServiceRefundPolicy(): LocalPolicyModel = LocalPolicyModel(
+        title = Res.string.terms_of_service_refund_policy.mapToString(),
         descriptions = buildList {
             add(Res.string.refund_description.toDescription())
         }
     )
 
-    private fun getLocalTermsOfServiceContactInformation(): LocalPolicyModel {
+    // TODO Need to add possibility to open email when user clicked
+    private suspend fun getLocalTermsOfServiceContactInformation(): LocalPolicyModel {
         return LocalPolicyModel(
-            title = Res.string.terms_of_service_contact_information,
+            title = Res.string.terms_of_service_contact_information.mapToString(),
             descriptions = buildList {
-                add(Res.string.terms_of_service_contact_information_description.toDescription())
+                add(Res.string.terms_of_service_contact_information_description.toDescription(args = CONTACT_EMAIL))
             }
         )
     }
