@@ -68,6 +68,7 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.kodein)
+            implementation(libs.autolinktext)
 
             implementation(libs.compose.viewmodel)
             implementation(libs.compose.navigation)

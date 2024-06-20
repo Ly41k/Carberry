@@ -2,9 +2,12 @@ package pro.carberry.multiplatform.mappers
 
 import pro.carberry.multiplatform.core.exceptions.ExceptionService
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem
+import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyClickableItem
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyDescription
+import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyListItem
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicySmallTitle
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
+import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel.Description
 import pro.carberry.multiplatform.repositories.policy.models.PolicyModel
 import pro.carberry.multiplatform.repositories.policy.models.RemotePolicyModel
 
@@ -21,10 +24,7 @@ class PolicyMapperImpl(
         return when (model) {
             is LocalPolicyModel -> buildList {
                 add(PolicySmallTitle(model.title))
-                addAll(model.descriptions.map {
-                    if (it.offset) PolicyViewItem.PolicyListItem(it.description)
-                    else PolicyDescription(it.description)
-                })
+                addAll(model.descriptions.map { it.toPolicyViewItem() })
             }
 
             is RemotePolicyModel -> buildList {
@@ -50,5 +50,11 @@ class PolicyMapperImpl(
                 emptyList()
             }
         }
+    }
+
+    private fun Description.toPolicyViewItem(): PolicyViewItem = when {
+        offset -> PolicyListItem(description)
+        isClickable -> PolicyClickableItem(description)
+        else -> PolicyDescription(description)
     }
 }

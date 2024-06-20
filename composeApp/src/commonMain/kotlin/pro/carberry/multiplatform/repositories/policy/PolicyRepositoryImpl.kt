@@ -166,12 +166,15 @@ class PolicyRepositoryImpl(
         }
     )
 
-    // TODO Need to add possibility to open email when user clicked
     private suspend fun getLocalTermsOfServiceContactInformation(): LocalPolicyModel {
         return LocalPolicyModel(
             title = Res.string.terms_of_service_contact_information.mapToString(),
             descriptions = buildList {
-                add(Res.string.terms_of_service_contact_information_description.toDescription(args = CONTACT_EMAIL))
+                add(
+                    Res.string.terms_of_service_contact_information_description.toDescription(
+                        args = CONTACT_EMAIL, isClickable = true
+                    )
+                )
             }
         )
     }
