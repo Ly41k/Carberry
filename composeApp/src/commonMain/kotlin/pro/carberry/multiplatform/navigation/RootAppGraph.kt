@@ -15,7 +15,7 @@ import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
 import pro.carberry.multiplatform.features.auth.forgot.compose.ForgotPasswordScreen
 import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
 import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
-import pro.carberry.multiplatform.features.policy.privacy.PrivacyPolicyScreen
+import pro.carberry.multiplatform.features.policy.privacy.compose.PrivacyPolicyScreen
 import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
 import pro.carberry.multiplatform.features.policy.term.compose.TermsOfServiceScreen
 import pro.carberry.multiplatform.features.splash.compose.SplashScreen
