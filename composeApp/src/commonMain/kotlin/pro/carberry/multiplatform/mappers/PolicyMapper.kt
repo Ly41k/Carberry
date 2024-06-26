@@ -6,6 +6,7 @@ import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.Polic
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyDescription
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyListItem
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicySmallTitle
+import pro.carberry.multiplatform.repositories.policy.models.DescriptionSubtitle
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel.Description
 import pro.carberry.multiplatform.repositories.policy.models.PolicyModel
@@ -59,7 +60,7 @@ class PolicyMapperImpl(
     override fun toPrivacyPolicy(model: PolicyModel): List<PolicyViewItem> {
         return when (model) {
             is LocalPolicyModel -> buildList {
-                if (model.title.isNotBlank()) add(PolicySmallTitle(model.title))
+                if (model.title.isNotBlank()) add(PolicyViewItem.PolicyLargeTitle(model.title))
                 addAll(model.descriptions.map { it.toPolicyViewItem() })
             }
 
@@ -78,6 +79,8 @@ class PolicyMapperImpl(
     private fun Description.toPolicyViewItem(): PolicyViewItem = when {
         offset -> PolicyListItem(description)
         isClickable -> PolicyClickableItem(description)
+        subtitle == DescriptionSubtitle.Small -> PolicyViewItem.PolicyMediumTitle(description)
+        subtitle == DescriptionSubtitle.Medium -> PolicyViewItem.PolicyMediumTitle(description)
         else -> PolicyDescription(description)
     }
 }

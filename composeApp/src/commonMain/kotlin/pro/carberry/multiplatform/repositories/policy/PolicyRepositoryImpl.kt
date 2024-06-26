@@ -1,6 +1,22 @@
 package pro.carberry.multiplatform.repositories.policy
 
 import carberry.composeapp.generated.resources.Res
+import carberry.composeapp.generated.resources.privacy_definitions
+import carberry.composeapp.generated.resources.privacy_definitions_description_access
+import carberry.composeapp.generated.resources.privacy_definitions_description_account
+import carberry.composeapp.generated.resources.privacy_definitions_description_affiliate
+import carberry.composeapp.generated.resources.privacy_definitions_description_application
+import carberry.composeapp.generated.resources.privacy_definitions_description_company
+import carberry.composeapp.generated.resources.privacy_definitions_description_country
+import carberry.composeapp.generated.resources.privacy_definitions_description_device
+import carberry.composeapp.generated.resources.privacy_definitions_description_personal_data
+import carberry.composeapp.generated.resources.privacy_definitions_description_service
+import carberry.composeapp.generated.resources.privacy_definitions_description_service_provider
+import carberry.composeapp.generated.resources.privacy_definitions_description_usage_data
+import carberry.composeapp.generated.resources.privacy_definitions_purposes
+import carberry.composeapp.generated.resources.privacy_interpretation
+import carberry.composeapp.generated.resources.privacy_interpretation_and_definitions
+import carberry.composeapp.generated.resources.privacy_interpretation_description
 import carberry.composeapp.generated.resources.privacy_overview_collect
 import carberry.composeapp.generated.resources.privacy_overview_date
 import carberry.composeapp.generated.resources.privacy_overview_describe
@@ -39,6 +55,7 @@ import carberry.composeapp.generated.resources.terms_of_service_refund_policy
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import pro.carberry.multiplatform.core.utils.Constants.CONTACT_EMAIL
+import pro.carberry.multiplatform.repositories.policy.models.DescriptionSubtitle.Medium
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
 import pro.carberry.multiplatform.repositories.policy.models.PolicyModel
 import pro.carberry.multiplatform.repositories.policy.models.mapToString
@@ -49,12 +66,15 @@ class PolicyRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher
 ) : PolicyRepository {
 
+    // TODO need to split into separate data sources
     override suspend fun getTermsOfServicePolicy(): List<PolicyModel> =
         getRemoteTermsOfService() ?: getLocalTermsOfService()
 
+    // TODO need to split into separate data sources
     override suspend fun getRefundPolicy(): List<PolicyModel> =
         getRemoteRefundPolicy() ?: getLocalRefundPolicy()
 
+    // TODO need to split into separate data sources
     override suspend fun getPrivacyPolicy(): List<PolicyModel> =
         getRemotePrivacyPolicy() ?: getLocalPrivacyPolicy()
 
@@ -106,6 +126,7 @@ class PolicyRepositoryImpl(
         return withContext(defaultDispatcher) {
             return@withContext buildList {
                 add(getLocalPrivacyOverview())
+                add(getLocalPrivacyInterpretationAndDefinitions())
             }
         }
     }
@@ -195,6 +216,29 @@ class PolicyRepositoryImpl(
                 add(Res.string.privacy_overview_date.toDescription())
                 add(Res.string.privacy_overview_describe.toDescription())
                 add(Res.string.privacy_overview_collect.toDescription())
+            }
+        )
+    }
+
+    private suspend fun getLocalPrivacyInterpretationAndDefinitions(): LocalPolicyModel {
+        return LocalPolicyModel(
+            title = Res.string.privacy_interpretation_and_definitions.mapToString(),
+            descriptions = buildList {
+                add(Res.string.privacy_interpretation.toDescription(subtitle = Medium))
+                add(Res.string.privacy_interpretation_description.toDescription())
+                add(Res.string.privacy_definitions.toDescription(subtitle = Medium))
+                add(Res.string.privacy_definitions_purposes.toDescription())
+                add(Res.string.privacy_definitions_description_account.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_affiliate.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_application.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_company.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_country.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_device.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_personal_data.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_service.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_service_provider.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_access.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_usage_data.toDescription(offset = true))
             }
         )
     }

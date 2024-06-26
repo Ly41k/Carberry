@@ -18,17 +18,23 @@ data class LocalPolicyModel(
     data class Description(
         val description: String,
         val offset: Boolean = false,
-        val isClickable: Boolean = false
+        val isClickable: Boolean = false,
+        val subtitle: DescriptionSubtitle = DescriptionSubtitle.None
     )
+}
+
+enum class DescriptionSubtitle {
+    None, Small, Medium
 }
 
 suspend fun StringResource.toDescription(
     offset: Boolean = false,
     args: Any? = null,
-    isClickable: Boolean = false
+    isClickable: Boolean = false,
+    subtitle: DescriptionSubtitle = DescriptionSubtitle.None
 ): LocalPolicyModel.Description {
     val description = args?.let { getString(this, it) } ?: getString(this)
-    return LocalPolicyModel.Description(description, offset, isClickable)
+    return LocalPolicyModel.Description(description, offset, isClickable, subtitle)
 }
 
 suspend fun StringResource.mapToString(): String = getString(this)

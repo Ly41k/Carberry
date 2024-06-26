@@ -64,7 +64,7 @@ fun PrivacyPolicyView(
                     LazyColumn(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                         item { PolicyTitleView(Res.string.privacy_policy) }
 
-                        items(state.policy) { policy -> PolicyViewText(policy, true) }
+                        items(state.policy) { policy -> PolicyViewText(policy, false) }
 
                         item {
                             HorizontalDivider(
@@ -87,6 +87,4 @@ fun PrivacyPolicyView(
             }
         }
     )
-
-
 }

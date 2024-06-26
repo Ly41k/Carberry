@@ -11,8 +11,8 @@ val typography = AppTypographies(
     largeHeading = TextStyle(
         fontStyle = FontStyle.Normal,
         fontWeight = FontWeight.Bold,
-        fontSize = 36.sp,
-        lineHeight = 46.sp
+        fontSize = 28.sp,
+        lineHeight = 38.sp
     ),
     mediumHeading = TextStyle(
         fontStyle = FontStyle.Normal,
