@@ -8,10 +8,12 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pro.carberry.multiplatform.core.extensions.toUpperCase
@@ -22,6 +24,7 @@ import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.Polic
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyListItem
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyMediumTitle
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicySmallTitle
+import pro.carberry.multiplatform.repositories.policy.models.PolicyItemStyle
 import pro.carberry.multiplatform.theme.AppTheme.colors
 import pro.carberry.multiplatform.theme.AppTheme.typography
 import sh.calvin.autolinktext.AutoLinkText
@@ -31,7 +34,7 @@ import sh.calvin.autolinktext.TextRuleDefaults
 fun PolicyViewText(item: PolicyViewItem, isTitleUppercase: Boolean = false) {
     when (item) {
         is PolicyDescription -> PolicyDescriptionText(item.value)
-        is PolicyListItem -> PolicyDescriptionText(item.value, true)
+        is PolicyListItem -> PolicyDescriptionText(item.value, true, item.style)
         is PolicyClickableItem -> PolicyDescriptionClickableText(item.value)
         is PolicyLargeTitle -> PolicyTitleText(item.value.toUpperCase(isTitleUppercase), typography.largeHeading)
         is PolicyMediumTitle -> PolicyTitleText(item.value.toUpperCase(isTitleUppercase), typography.mediumHeading)
@@ -51,10 +54,17 @@ private fun PolicyTitleText(title: String, style: TextStyle) {
 }
 
 @[Composable Stable]
-private fun PolicyDescriptionText(description: String, isListItem: Boolean = false) {
+private fun PolicyDescriptionText(
+    description: String,
+    isListItem: Boolean = false,
+    style: PolicyItemStyle? = null
+) {
     Text(
         modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 8.dp, start = if (isListItem) 24.dp else 0.dp),
-        text = description,
+        text = buildAnnotatedString {
+            style?.let { withStyle(style = it.style) { append(it.text) } }
+            append(description)
+        },
         style = typography.normalText,
         textAlign = TextAlign.Justify,
         color = colors.primaryText

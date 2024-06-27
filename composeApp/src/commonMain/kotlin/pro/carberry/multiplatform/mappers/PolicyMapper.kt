@@ -4,7 +4,9 @@ import pro.carberry.multiplatform.core.exceptions.ExceptionService
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyClickableItem
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyDescription
+import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyLargeTitle
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyListItem
+import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicyMediumTitle
 import pro.carberry.multiplatform.interactors.policy.models.PolicyViewItem.PolicySmallTitle
 import pro.carberry.multiplatform.repositories.policy.models.DescriptionSubtitle
 import pro.carberry.multiplatform.repositories.policy.models.LocalPolicyModel
@@ -60,7 +62,7 @@ class PolicyMapperImpl(
     override fun toPrivacyPolicy(model: PolicyModel): List<PolicyViewItem> {
         return when (model) {
             is LocalPolicyModel -> buildList {
-                if (model.title.isNotBlank()) add(PolicyViewItem.PolicyLargeTitle(model.title))
+                if (model.title.isNotBlank()) add(PolicyLargeTitle(model.title))
                 addAll(model.descriptions.map { it.toPolicyViewItem() })
             }
 
@@ -77,10 +79,10 @@ class PolicyMapperImpl(
     }
 
     private fun Description.toPolicyViewItem(): PolicyViewItem = when {
-        offset -> PolicyListItem(description)
+        offset -> PolicyListItem(description, style)
         isClickable -> PolicyClickableItem(description)
-        subtitle == DescriptionSubtitle.Small -> PolicyViewItem.PolicyMediumTitle(description)
-        subtitle == DescriptionSubtitle.Medium -> PolicyViewItem.PolicyMediumTitle(description)
+        subtitle == DescriptionSubtitle.Small -> PolicySmallTitle(description)
+        subtitle == DescriptionSubtitle.Medium -> PolicyMediumTitle(description)
         else -> PolicyDescription(description)
     }
 }

@@ -168,17 +168,17 @@ class PolicyRepositoryImpl(
         title = Res.string.terms_of_service_prohibited_uses.mapToString(),
         descriptions = buildList {
             add(Res.string.terms_of_service_prohibited_uses_description.toDescription())
-            add(Res.string.terms_of_service_prohibited_uses_description_a.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_b.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_c.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_d.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_e.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_f.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_g.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_h.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_i.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_j.toDescription(true))
-            add(Res.string.terms_of_service_prohibited_uses_description_k.toDescription(true))
+            add(Res.string.terms_of_service_prohibited_uses_description_a.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_b.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_c.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_d.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_e.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_f.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_g.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_h.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_i.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_j.toDescription(true, isStyled = true))
+            add(Res.string.terms_of_service_prohibited_uses_description_k.toDescription(true, isStyled = true))
             add(Res.string.terms_of_service_prohibited_uses_description_summary.toDescription())
         }
     )
@@ -228,17 +228,33 @@ class PolicyRepositoryImpl(
                 add(Res.string.privacy_interpretation_description.toDescription())
                 add(Res.string.privacy_definitions.toDescription(subtitle = Medium))
                 add(Res.string.privacy_definitions_purposes.toDescription())
-                add(Res.string.privacy_definitions_description_account.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_affiliate.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_application.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_company.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_country.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_device.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_personal_data.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_service.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_service_provider.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_access.toDescription(offset = true))
-                add(Res.string.privacy_definitions_description_usage_data.toDescription(offset = true))
+                add(Res.string.privacy_definitions_description_account.toDescription(offset = true, isStyled = true))
+                add(Res.string.privacy_definitions_description_affiliate.toDescription(offset = true, isStyled = true))
+                add(
+                    Res.string.privacy_definitions_description_application.toDescription(
+                        offset = true, isStyled = true
+                    )
+                )
+                add(Res.string.privacy_definitions_description_company.toDescription(offset = true, isStyled = true))
+                add(Res.string.privacy_definitions_description_country.toDescription(offset = true, isStyled = true))
+                add(Res.string.privacy_definitions_description_device.toDescription(offset = true, isStyled = true))
+                add(
+                    Res.string.privacy_definitions_description_personal_data.toDescription(
+                        offset = true, isStyled = true, wordCount = 2
+                    )
+                )
+                add(Res.string.privacy_definitions_description_service.toDescription(offset = true, isStyled = true))
+                add(
+                    Res.string.privacy_definitions_description_service_provider.toDescription(
+                        offset = true, isStyled = true, wordCount = 2
+                    )
+                )
+                add(Res.string.privacy_definitions_description_access.toDescription(offset = true, isStyled = true))
+                add(
+                    Res.string.privacy_definitions_description_usage_data.toDescription(
+                        offset = true, isStyled = true, wordCount = 2
+                    )
+                )
             }
         )
     }
