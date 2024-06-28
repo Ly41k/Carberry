@@ -3,15 +3,16 @@
 
     <application
         android:name=".AndroidApp"
-        android:icon="@android:drawable/ic_menu_compass"
+        android:icon="@mipmap/ic_launcher"
         android:label="Carberry"
+        android:roundIcon="@mipmap/ic_launcher"
         android:theme="@android:style/Theme.Material.NoActionBar">
         <activity
             android:name=".AppActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:exported="true"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
