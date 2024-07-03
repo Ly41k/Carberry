@@ -14,6 +14,7 @@ import androidx.navigation.navigation
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
 import pro.carberry.multiplatform.features.auth.forgot.compose.ForgotPasswordScreen
 import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
+import pro.carberry.multiplatform.features.auth.register.compose.RegistrationScreen
 import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
 import pro.carberry.multiplatform.features.policy.privacy.compose.PrivacyPolicyScreen
 import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
@@ -21,6 +22,7 @@ import pro.carberry.multiplatform.features.policy.term.compose.TermsOfServiceScr
 import pro.carberry.multiplatform.features.splash.compose.SplashScreen
 import pro.carberry.multiplatform.navigation.AuthAppScreens.ForgotPassword
 import pro.carberry.multiplatform.navigation.AuthAppScreens.Login
+import pro.carberry.multiplatform.navigation.AuthAppScreens.Register
 import pro.carberry.multiplatform.navigation.AuthAppScreens.ResetPassword
 import pro.carberry.multiplatform.navigation.PolicyAppScreens.Privacy
 import pro.carberry.multiplatform.navigation.PolicyAppScreens.Refund
@@ -57,6 +59,7 @@ fun NavGraphBuilder.authGraph() {
         composable(route = Login.name) { LoginScreen() }
         composable(route = ForgotPassword.name) { ForgotPasswordScreen() }
         composable(route = ResetPassword.name) { ResetPasswordScreen() }
+        composable(route = Register.name) { RegistrationScreen() }
     }
 }
 

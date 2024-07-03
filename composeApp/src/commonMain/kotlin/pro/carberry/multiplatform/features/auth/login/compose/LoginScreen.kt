@@ -35,7 +35,7 @@ fun LoginScreen(
         OpenForgotPasswordScreen -> navController.navigateWithClearAction(ForgotPassword.name, viewModel::clearAction)
         OpenMainFlow -> navController.navigateWithPopBackStack(Main.name)
         OpenRefundPolicy -> navController.navigateWithClearAction(Refund.name, viewModel::clearAction)
-        OpenRegistrationScreen -> navController.navigate(Register.name)
+        OpenRegistrationScreen -> navController.navigateWithClearAction(Register.name, viewModel::clearAction)
         OpenTermsOfService -> navController.navigateWithClearAction(TermsOfService.name, viewModel::clearAction)
         null -> {
             /* Do nothing*/
