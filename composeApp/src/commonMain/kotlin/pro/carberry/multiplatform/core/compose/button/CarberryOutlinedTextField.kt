@@ -13,7 +13,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import pro.carberry.multiplatform.theme.AppTheme
-import pro.carberry.multiplatform.theme.DefaultOutlinedTextFieldTheme
+import pro.carberry.multiplatform.theme.DefaultOutlinedTextFieldColors
 
 @[Stable Composable]
 fun CarberryOutlinedTextField(
@@ -33,7 +33,7 @@ fun CarberryOutlinedTextField(
         modifier = modifier,
         value = text,
         singleLine = true,
-        colors = DefaultOutlinedTextFieldTheme(),
+        colors = DefaultOutlinedTextFieldColors(),
         visualTransformation = if (isSecure) PasswordVisualTransformation() else VisualTransformation.None,
         label = { Label(hint) },
         placeholder = { Label(placeholder) },

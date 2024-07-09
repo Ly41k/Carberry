@@ -21,7 +21,18 @@ enum class PolicyAppScreens {
     TermsOfService
 }
 
-
 enum class MainAppScreens {
-    Home, Orders, Profile
+    HomeFlow, OrdersFLow, ProfileFlow
+}
+
+enum class HomeAppScreens {
+    Home
+}
+
+enum class OrdersAppScreens {
+    Orders, Order
+}
+
+enum class ProfileAppScreens {
+    Profile
 }
