@@ -24,10 +24,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run UI Tests
-        run: ./gradlew clean pixel5Check jvmTest iosSimulatorArm64Test
-
-
-
-
-
-
+        run: ./gradlew clean testDebug

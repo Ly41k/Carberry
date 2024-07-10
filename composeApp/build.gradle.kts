@@ -1,6 +1,6 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import com.android.build.api.dsl.ManagedVirtualDevice
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
@@ -20,6 +20,7 @@ kotlin {
                 compilerOptions {
                     jvmTarget.set(JvmTarget.JVM_1_8)
                     freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_1_8}")
+                    freeCompilerArgs.add("-Xexpect-actual-classes")
                 }
             }
         }
