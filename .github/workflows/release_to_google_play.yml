@@ -67,6 +67,6 @@ jobs:
           serviceAccountJson: service_account.json
           packageName: pro.carberry.multiplatform.androidApp
           releaseFiles: composeApp/build/outputs/bundle/release/composeApp-release.aab
-          track: alpha
+          track: internal
           status: completed
           whatsNewDirectory: whatsNew/
