@@ -37,6 +37,7 @@ import org.jetbrains.compose.resources.stringResource
 import pro.carberry.multiplatform.core.compose.button.CarberryActionButton
 import pro.carberry.multiplatform.core.naviagtion.LocalRootNavHostController
 import pro.carberry.multiplatform.core.naviagtion.navigateWithPopBackStack
+import pro.carberry.multiplatform.features.orders.general.compose.OrdersGeneralScreen
 import pro.carberry.multiplatform.theme.AppTheme
 import pro.carberry.multiplatform.theme.DefaultNavigationBarItemColors
 
@@ -58,7 +59,7 @@ fun MainAppGraph() {
                 modifier = Modifier.fillMaxSize()
             ) {
                 homeGraph(navController)
-                ordersGraph(navController)
+                ordersGraph()
                 profileGraph(navController)
             }
         }
@@ -102,40 +103,12 @@ private fun NavGraphBuilder.homeGraph(navController: NavHostController) {
     }
 }
 
-private fun NavGraphBuilder.ordersGraph(navController: NavHostController) {
+private fun NavGraphBuilder.ordersGraph() {
     navigation(
         startDestination = OrdersAppScreens.Orders.name,
         route = MainNavigation.Orders.route
     ) {
-        composable(route = OrdersAppScreens.Orders.name) {
-            Column(
-                modifier = Modifier.fillMaxWidth().systemBarsPadding().padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-                    style = AppTheme.typography.mediumHeading,
-                    text = "Orders",
-                    color = AppTheme.colors.primaryText,
-                    textAlign = TextAlign.Center
-                )
-
-                Text(
-                    modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-                    style = AppTheme.typography.smallHeading,
-                    text = "Will be added soon",
-                    textAlign = TextAlign.Center,
-                    color = AppTheme.colors.secondaryText
-                )
-
-                CarberryActionButton(
-                    modifier = Modifier.fillMaxWidth().padding(top = 40.dp),
-                    text = "Logout",
-                    enabled = true,
-                    onClick = { navController.navigateWithPopBackStack(RootAppScreens.Splash.name) }
-                )
-            }
-        }
+        composable(route = OrdersAppScreens.Orders.name) { OrdersGeneralScreen() }
     }
 }
 
