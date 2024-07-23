@@ -16,6 +16,7 @@ import pro.carberry.multiplatform.features.auth.forgot.compose.ForgotPasswordScr
 import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
 import pro.carberry.multiplatform.features.auth.register.compose.RegistrationScreen
 import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
+import pro.carberry.multiplatform.features.neworder.maininfo.compose.OrderMainInfoScreen
 import pro.carberry.multiplatform.features.policy.privacy.compose.PrivacyPolicyScreen
 import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
 import pro.carberry.multiplatform.features.policy.term.compose.TermsOfServiceScreen
@@ -46,6 +47,7 @@ fun RootAppGraph(navController: NavHostController = rememberNavController()) {
             composable(route = Splash.name) { SplashScreen() }
             authGraph()
             policyGraph()
+            newOrderGraph()
             composable(route = Main.name) { MainAppGraph() }
         }
     }
@@ -71,5 +73,14 @@ fun NavGraphBuilder.policyGraph() {
         composable(route = Privacy.name) { PrivacyPolicyScreen() }
         composable(route = Refund.name) { RefundPolicyScreen() }
         composable(route = TermsOfService.name) { TermsOfServiceScreen() }
+    }
+}
+
+fun NavGraphBuilder.newOrderGraph() {
+    navigation(
+        startDestination = NewOrderAppScreens.MainInfo.name,
+        route = RootAppScreens.NewOrderFlow.name
+    ) {
+        composable(route = NewOrderAppScreens.MainInfo.name) { OrderMainInfoScreen() }
     }
 }
