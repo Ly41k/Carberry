@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,8 +33,7 @@ fun OrdersGeneralView(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .systemBarsPadding()
-            .padding(top = 24.dp, start = 24.dp, end = 24.dp)
+            .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 12.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth().weight(1f),

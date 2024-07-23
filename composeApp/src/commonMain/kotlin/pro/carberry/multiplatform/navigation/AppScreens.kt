@@ -4,6 +4,7 @@ enum class RootAppScreens {
     Splash,
     AuthFlow,
     PolicyFlow,
+    NewOrderFlow,
     Onboarding,
     Main
 }
@@ -21,6 +22,10 @@ enum class PolicyAppScreens {
     TermsOfService
 }
 
+enum class NewOrderAppScreens {
+    MainInfo
+}
+
 enum class MainAppScreens {
     HomeFlow, OrdersFLow, ProfileFlow
 }
@@ -30,7 +35,7 @@ enum class HomeAppScreens {
 }
 
 enum class OrdersAppScreens {
-    Orders, Order
+    Orders
 }
 
 enum class ProfileAppScreens {
