@@ -1,0 +1,10 @@
+[
+  {
+    "vehicle_type_id": 0,
+    "vehicle_type_name": "Car"
+  },
+  {
+    "vehicle_type_id": 1,
+    "vehicle_type_name": "Truck"
+  }
+]
