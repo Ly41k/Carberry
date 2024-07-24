@@ -1,0 +1,86 @@
+[
+  {
+    "_comment": "Ford Mustang 3.8L V6",
+    "ecu_type_id": 0,
+    "engine_id": 0,
+    "ecu_type_name": "Visteon EEC-VI"
+  },
+  {
+    "_comment": "Ford Mustang 5.4L V8 GT500",
+    "ecu_type_id": 1,
+    "engine_id": 1,
+    "ecu_type_name": "Visteon EEC-VI"
+  },
+  {
+    "_comment": "Ford Mondeo 2.0 TDCI",
+    "ecu_type_id": 2,
+    "engine_id": 2,
+    "ecu_type_name": "Delphi DCM3.5"
+  },
+  {
+    "_comment": "Ford Mondeo 2.0 TDCI",
+    "ecu_type_id": 3,
+    "engine_id": 2,
+    "ecu_type_name": "Siemens/Continental SID803"
+  },
+  {
+    "_comment": "Ford Mondeo 2.5i Turbo",
+    "ecu_type_id": 4,
+    "engine_id": 3,
+    "ecu_type_name": "Bosch ME9.0C"
+  },
+  {
+    "_comment": "Ford CARGO 1846 343kW/460HP",
+    "ecu_type_id": 5,
+    "engine_id": 4,
+    "ecu_type_name": "Bosch EDC7UC31"
+  },
+  {
+    "_comment": "Ford CARGO 3235 261kW/350HP",
+    "ecu_type_id": 6,
+    "engine_id": 5,
+    "ecu_type_name": "Bosch EDC7UC31"
+  },
+  {
+    "_comment": "BMW X6 G06 X6 40d 320hp",
+    "ecu_type_id": 7,
+    "engine_id": 6,
+    "ecu_type_name": "Bosch MD1"
+  },
+  {
+    "_comment": "BMW X6 G06 X6 xDrive M50i",
+    "ecu_type_id": 8,
+    "engine_id": 7,
+    "ecu_type_name": "Bosch MG1CS003"
+  },
+  {
+    "_comment": "BMW F85 X5M 4.4i Biturbo 585hp",
+    "ecu_type_id": 9,
+    "engine_id": 8,
+    "ecu_type_name": "Bosch MEVD17.2X generation 1"
+  },
+  {
+    "_comment": "BMW F85 X5M 4.4i Biturbo 585hp",
+    "ecu_type_id": 10,
+    "engine_id": 8,
+    "ecu_type_name": "Bosch MEVD17.2X generation 2"
+  },
+  {
+    "_comment": "DAW CF85 360-510PS",
+    "ecu_type_id": 11,
+    "engine_id": 9,
+    "ecu_type_name": "Delphi DMCI"
+  },
+  {
+    "_comment": "DAW CF85 360-510PS",
+    "ecu_type_id": 12,
+    "engine_id": 9,
+    "ecu_type_name": "Delphi ETC3"
+  },
+  {
+    "_comment": "DAW XF105 410-510PS",
+    "ecu_type_id": 13,
+    "engine_id": 10,
+    "ecu_type_name": "Delphi DMCI"
+  }
+]

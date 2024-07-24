@@ -1,0 +1,50 @@
+[
+  {
+    "model_id": 0,
+    "vehicle_type_id": 0,
+    "manufacturer_id": 0,
+    "model_name": "Mustang"
+  },
+  {
+    "model_id": 1,
+    "vehicle_type_id": 0,
+    "manufacturer_id": 0,
+    "model_name": "Mondeo"
+  },
+  {
+    "model_id": 2,
+    "vehicle_type_id": 1,
+    "manufacturer_id": 0,
+    "model_name": "CARGO 1846"
+  },
+  {
+    "model_id": 3,
+    "vehicle_type_id": 1,
+    "manufacturer_id": 0,
+    "model_name": "CARGO 3235"
+  },
+  {
+    "model_id": 4,
+    "vehicle_type_id": 0,
+    "manufacturer_id": 1,
+    "model_name": "X6 G06"
+  },
+  {
+    "model_id": 5,
+    "vehicle_type_id": 0,
+    "manufacturer_id": 1,
+    "model_name": "F85"
+  },
+  {
+    "model_id": 6,
+    "vehicle_type_id": 1,
+    "manufacturer_id": 1,
+    "model_name": "CF85"
+  },
+  {
+    "model_id": 7,
+    "vehicle_type_id": 1,
+    "manufacturer_id": 1,
+    "model_name": "XF105"
+  }
+]

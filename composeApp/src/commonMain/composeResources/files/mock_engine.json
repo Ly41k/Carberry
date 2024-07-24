@@ -1,0 +1,68 @@
+[
+  {
+    "_comment": "Ford Mustang",
+    "engine_id": 0,
+    "model_id": 0,
+    "engine_name": "3.8L V6"
+  },
+  {
+    "_comment": "Ford Mustang",
+    "engine_id": 1,
+    "model_id": 0,
+    "engine_name": "5.4L V8 GT500"
+  },
+  {
+    "_comment": "Ford Mondeo",
+    "engine_id": 2,
+    "model_id": 1,
+    "engine_name": "2.0 TDCI"
+  },
+  {
+    "_comment": "Ford Mondeo",
+    "engine_id": 3,
+    "model_id": 1,
+    "engine_name": "2.5i Turbo"
+  },
+  {
+    "_comment": "Ford CARGO 1846",
+    "engine_id": 4,
+    "model_id": 2,
+    "engine_name": "343kW/460HP"
+  },
+  {
+    "_comment": "Ford CARGO 3235",
+    "engine_id": 5,
+    "model_id": 3,
+    "engine_name": "261kW/350HP"
+  },
+  {
+    "_comment": "BMW X6 G06",
+    "engine_id": 6,
+    "model_id": 4,
+    "engine_name": "X6 40d 320hp"
+  },
+  {
+    "_comment": "BMW X6 G06",
+    "engine_id": 7,
+    "model_id": 4,
+    "engine_name": "X6 xDrive M50i"
+  },
+  {
+    "_comment": "BMW F85",
+    "engine_id": 8,
+    "model_id": 5,
+    "engine_name": "X5M 4.4i Biturbo 585hp"
+  },
+  {
+    "_comment": "DAW CF85",
+    "engine_id": 9,
+    "model_id": 6,
+    "engine_name": "360-510PS"
+  },
+  {
+    "_comment": "DAW XF105",
+    "engine_id": 10,
+    "model_id": 7,
+    "engine_name": "410-510PS"
+  }
+]
