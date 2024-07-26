@@ -4,18 +4,18 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VehicleTypeResponse(
+data class NewOrderVehicleTypeResponse(
     @SerialName("vehicle_type_id") val vehicleTypeId: Long,
     @SerialName("vehicle_type_name") val vehicleTypeName: String
 )
 
 @Serializable
-data class MockVehicleTypeResponse(
+data class MockNewOrderVehicleTypeResponse(
     @SerialName("vehicle_type_id") val vehicleTypeId: Long? = null,
     @SerialName("vehicle_type_name") val vehicleTypeName: String? = null
 )
 
-fun MockVehicleTypeResponse.toVehicleTypeResponse(): VehicleTypeResponse? {
+fun MockNewOrderVehicleTypeResponse.toNewOrderVehicleTypeResponse(): NewOrderVehicleTypeResponse? {
     return if (vehicleTypeId == null || vehicleTypeName == null) return null
-    else VehicleTypeResponse(vehicleTypeId, vehicleTypeName)
+    else NewOrderVehicleTypeResponse(vehicleTypeId, vehicleTypeName)
 }

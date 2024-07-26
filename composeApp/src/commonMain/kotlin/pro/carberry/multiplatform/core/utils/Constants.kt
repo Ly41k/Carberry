@@ -11,4 +11,8 @@ object Constants {
     const val CONTACT_EMAIL: String = "info@carberry.pro"
 
     const val VEHICLE_TYPE_MOCK_PATH: String = "files/neworder/mock_vehicle_type.json"
+    const val MANUFACTURER_MOCK_PATH: String = "files/neworder/mock_manufacturer.json"
+    const val MODEL_MOCK_PATH: String = "files/neworder/mock_model.json"
+    const val ENGINE_MOCK_PATH: String = "files/neworder/mock_engine.json"
+    const val ECU_TYPE_MOCK_PATH: String = "files/neworder/mock_manufacturer.json"
 }
