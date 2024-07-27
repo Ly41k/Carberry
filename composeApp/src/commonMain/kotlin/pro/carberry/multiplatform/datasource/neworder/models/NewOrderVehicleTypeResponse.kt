@@ -1,4 +1,4 @@
-package pro.carberry.multiplatform.repositories.neworder.models
+package pro.carberry.multiplatform.datasource.neworder.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -16,6 +16,6 @@ data class MockNewOrderVehicleTypeResponse(
 )
 
 fun MockNewOrderVehicleTypeResponse.toNewOrderVehicleTypeResponse(): NewOrderVehicleTypeResponse? {
-    return if (vehicleTypeId == null || vehicleTypeName == null) return null
+    return if (vehicleTypeId == null || vehicleTypeName == null) null
     else NewOrderVehicleTypeResponse(vehicleTypeId, vehicleTypeName)
 }

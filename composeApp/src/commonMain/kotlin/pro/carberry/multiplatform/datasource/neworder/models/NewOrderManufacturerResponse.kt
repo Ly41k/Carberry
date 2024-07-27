@@ -1,4 +1,4 @@
-package pro.carberry.multiplatform.repositories.neworder.models
+package pro.carberry.multiplatform.datasource.neworder.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,6 +20,6 @@ data class MockNewOrderManufacturerResponse(
 }
 
 fun MockNewOrderManufacturerResponse.toNewOrderManufacturerResponse(): NewOrderManufacturerResponse? {
-    return if (manufacturerId == null || manufacturerName == null) return null
+    return if (manufacturerId == null || manufacturerName == null) null
     else NewOrderManufacturerResponse(manufacturerId, manufacturerName)
 }
