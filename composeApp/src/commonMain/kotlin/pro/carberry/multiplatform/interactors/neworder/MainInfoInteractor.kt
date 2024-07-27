@@ -1,0 +1,3 @@
+package pro.carberry.multiplatform.interactors.neworder
+
+interface MainInfoInteractor

@@ -1,4 +1,4 @@
-package pro.carberry.multiplatform.repositories.neworder.models
+package pro.carberry.multiplatform.datasource.neworder.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -17,6 +17,6 @@ data class MockNewOrderEngineResponse(
 )
 
 fun MockNewOrderEngineResponse.toNewOrderEngineResponse(): NewOrderEngineResponse? {
-    return if (engineId == null || engineName == null) return null
+    return if (engineId == null || engineName == null) null
     else NewOrderEngineResponse(engineId, engineName)
 }

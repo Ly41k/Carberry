@@ -1,4 +1,4 @@
-package pro.carberry.multiplatform.repositories.neworder.data
+package pro.carberry.multiplatform.datasource.neworder
 
 import carberry.composeapp.generated.resources.Res
 import kotlinx.coroutines.CoroutineDispatcher
@@ -11,21 +11,21 @@ import pro.carberry.multiplatform.core.utils.Constants.ENGINE_MOCK_PATH
 import pro.carberry.multiplatform.core.utils.Constants.MANUFACTURER_MOCK_PATH
 import pro.carberry.multiplatform.core.utils.Constants.MODEL_MOCK_PATH
 import pro.carberry.multiplatform.core.utils.Constants.VEHICLE_TYPE_MOCK_PATH
-import pro.carberry.multiplatform.repositories.neworder.models.MockNewOrderECUTypeResponse
-import pro.carberry.multiplatform.repositories.neworder.models.MockNewOrderEngineResponse
-import pro.carberry.multiplatform.repositories.neworder.models.MockNewOrderManufacturerResponse
-import pro.carberry.multiplatform.repositories.neworder.models.MockNewOrderModelResponse
-import pro.carberry.multiplatform.repositories.neworder.models.MockNewOrderVehicleTypeResponse
-import pro.carberry.multiplatform.repositories.neworder.models.NewOrderECUTypeResponse
-import pro.carberry.multiplatform.repositories.neworder.models.NewOrderEngineResponse
-import pro.carberry.multiplatform.repositories.neworder.models.NewOrderManufacturerResponse
-import pro.carberry.multiplatform.repositories.neworder.models.NewOrderModelResponse
-import pro.carberry.multiplatform.repositories.neworder.models.NewOrderVehicleTypeResponse
-import pro.carberry.multiplatform.repositories.neworder.models.toNewOrderECUTypeResponse
-import pro.carberry.multiplatform.repositories.neworder.models.toNewOrderEngineResponse
-import pro.carberry.multiplatform.repositories.neworder.models.toNewOrderManufacturerResponse
-import pro.carberry.multiplatform.repositories.neworder.models.toNewOrderModelResponse
-import pro.carberry.multiplatform.repositories.neworder.models.toNewOrderVehicleTypeResponse
+import pro.carberry.multiplatform.datasource.neworder.models.MockNewOrderECUTypeResponse
+import pro.carberry.multiplatform.datasource.neworder.models.MockNewOrderEngineResponse
+import pro.carberry.multiplatform.datasource.neworder.models.MockNewOrderManufacturerResponse
+import pro.carberry.multiplatform.datasource.neworder.models.MockNewOrderModelResponse
+import pro.carberry.multiplatform.datasource.neworder.models.MockNewOrderVehicleTypeResponse
+import pro.carberry.multiplatform.datasource.neworder.models.NewOrderECUTypeResponse
+import pro.carberry.multiplatform.datasource.neworder.models.NewOrderEngineResponse
+import pro.carberry.multiplatform.datasource.neworder.models.NewOrderManufacturerResponse
+import pro.carberry.multiplatform.datasource.neworder.models.NewOrderModelResponse
+import pro.carberry.multiplatform.datasource.neworder.models.NewOrderVehicleTypeResponse
+import pro.carberry.multiplatform.datasource.neworder.models.toNewOrderECUTypeResponse
+import pro.carberry.multiplatform.datasource.neworder.models.toNewOrderEngineResponse
+import pro.carberry.multiplatform.datasource.neworder.models.toNewOrderManufacturerResponse
+import pro.carberry.multiplatform.datasource.neworder.models.toNewOrderModelResponse
+import pro.carberry.multiplatform.datasource.neworder.models.toNewOrderVehicleTypeResponse
 
 class MockMainInfoDataSourceImpl(
     private val json: Json,
