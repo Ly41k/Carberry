@@ -15,6 +15,7 @@ val appModule = DI.Module("appModule") {
         mapperModule,
         coroutineModule,
         serializationModule,
-        dataSourceModule
+        dataSourceModule,
+        storeModule
     )
 }
