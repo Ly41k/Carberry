@@ -13,19 +13,30 @@ class NewOrderRepositoryImpl(
     private val mainInfoDataSource: MainInfoDataSource
 ) : NewOrderRepository {
 
-    override suspend fun getNewOrderMainInformation(
-        vehicleTypeId: Long?,
-        manufacturerId: Long?,
-        modelId: Long?,
-        engineId: Long?
-    ): List<NewOrderGroupInfoModel> {
+    override suspend fun getMainInfoByDefault(): List<NewOrderGroupInfoModel> {
         return buildList {
             add(getNewOrderVehicleTypesGroup())
-            add(getNewOrderManufacturerGroup(manufacturerId))
-            add(getNewOrderModels(vehicleTypeId, manufacturerId))
-            add(getNewOrderEngines(modelId))
-            add(getNewOrderECUType(engineId))
+            add(getNewOrderManufacturerGroup())
+            add(getNewOrderModels())
+            add(getNewOrderEngines())
+            add(getNewOrderECUType())
         }
+    }
+
+    override suspend fun getNewOrderManufacturerById(vehicleTypeId: Long): NewOrderGroupInfoModel {
+        return getNewOrderManufacturerGroup(vehicleTypeId)
+    }
+
+    override suspend fun getNewOrderModelByIds(vehicleTypeId: Long, manufacturerId: Long): NewOrderGroupInfoModel {
+        return getNewOrderModels(vehicleTypeId, manufacturerId)
+    }
+
+    override suspend fun getNewOrderEngineById(modelId: Long): NewOrderGroupInfoModel {
+        return getNewOrderEngines(modelId)
+    }
+
+    override suspend fun getNewOrderECUTypeById(engineId: Long): NewOrderGroupInfoModel {
+        return getNewOrderECUType(engineId)
     }
 
     private suspend fun getNewOrderVehicleTypesGroup(): NewOrderGroupInfoModel {
@@ -35,28 +46,31 @@ class NewOrderRepositoryImpl(
         )
     }
 
-    private suspend fun getNewOrderManufacturerGroup(vehicleTypeId: Long?): NewOrderGroupInfoModel {
+    private suspend fun getNewOrderManufacturerGroup(vehicleTypeId: Long? = null): NewOrderGroupInfoModel {
         return NewOrderGroupInfoModel(
             groupType = Manufacturer,
             items = mainInfoDataSource.fetchManufacturers(vehicleTypeId).map { it.toNewOrderInfoModel() }
         )
     }
 
-    private suspend fun getNewOrderModels(vehicleTypeId: Long?, manufacturerId: Long?): NewOrderGroupInfoModel {
+    private suspend fun getNewOrderModels(
+        vehicleTypeId: Long? = null,
+        manufacturerId: Long? = null
+    ): NewOrderGroupInfoModel {
         return NewOrderGroupInfoModel(
             groupType = Model,
             items = mainInfoDataSource.fetchModels(vehicleTypeId, manufacturerId).map { it.toNewOrderInfoModel() }
         )
     }
 
-    private suspend fun getNewOrderEngines(modelId: Long?): NewOrderGroupInfoModel {
+    private suspend fun getNewOrderEngines(modelId: Long? = null): NewOrderGroupInfoModel {
         return NewOrderGroupInfoModel(
             groupType = Engine,
             mainInfoDataSource.fetchEngines(modelId).map { it.toNewOrderInfoModel() }
         )
     }
 
-    private suspend fun getNewOrderECUType(engineId: Long?): NewOrderGroupInfoModel {
+    private suspend fun getNewOrderECUType(engineId: Long? = null): NewOrderGroupInfoModel {
         return NewOrderGroupInfoModel(
             groupType = ECUType,
             items = mainInfoDataSource.fetchECUType(engineId).map { it.toNewOrderInfoModel() }

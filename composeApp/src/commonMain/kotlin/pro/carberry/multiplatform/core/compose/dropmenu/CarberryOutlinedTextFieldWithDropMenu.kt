@@ -32,7 +32,7 @@ fun CarberryOutlinedTextFieldWithDropMenu(
     icon: ImageVector,
     isExpanded: Boolean,
     onDropMenuExpanded: () -> Unit,
-    onTextChanged: (String) -> Unit,
+    onTextChanged: (DropItemModel) -> Unit,
     onTextFieldSizeChanged: (Size) -> Unit
 ) {
     Box(modifier = modifier) {
@@ -67,7 +67,7 @@ fun CarberryOutlinedTextFieldWithDropMenu(
                 DropdownMenuItem(
                     text = { Text(text = model.name) },
                     onClick = {
-                        onTextChanged.invoke(model.name)
+                        onTextChanged.invoke(model)
                         onDropMenuExpanded.invoke()
                     }
                 )
