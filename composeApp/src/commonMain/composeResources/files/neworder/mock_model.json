@@ -38,13 +38,13 @@
   {
     "model_id": 6,
     "vehicle_type_id": 1,
-    "manufacturer_id": 1,
+    "manufacturer_id": 2,
     "model_name": "CF85"
   },
   {
     "model_id": 7,
     "vehicle_type_id": 1,
-    "manufacturer_id": 1,
+    "manufacturer_id": 2,
     "model_name": "XF105"
   }
 ]
