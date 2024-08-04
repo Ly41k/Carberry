@@ -14,5 +14,5 @@ object Constants {
     const val MANUFACTURER_MOCK_PATH: String = "files/neworder/mock_manufacturer.json"
     const val MODEL_MOCK_PATH: String = "files/neworder/mock_model.json"
     const val ENGINE_MOCK_PATH: String = "files/neworder/mock_engine.json"
-    const val ECU_TYPE_MOCK_PATH: String = "files/neworder/mock_manufacturer.json"
+    const val ECU_TYPE_MOCK_PATH: String = "files/neworder/mock_ecu_type.json"
 }
