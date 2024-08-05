@@ -17,6 +17,7 @@ import pro.carberry.multiplatform.features.auth.login.compose.LoginScreen
 import pro.carberry.multiplatform.features.auth.register.compose.RegistrationScreen
 import pro.carberry.multiplatform.features.auth.reset.compose.ResetPasswordScreen
 import pro.carberry.multiplatform.features.neworder.maininfo.compose.OrderMainInfoScreen
+import pro.carberry.multiplatform.features.neworder.services.compose.OrderServicesScreen
 import pro.carberry.multiplatform.features.policy.privacy.compose.PrivacyPolicyScreen
 import pro.carberry.multiplatform.features.policy.refund.compose.RefundPolicyScreen
 import pro.carberry.multiplatform.features.policy.term.compose.TermsOfServiceScreen
@@ -25,11 +26,14 @@ import pro.carberry.multiplatform.navigation.AuthAppScreens.ForgotPassword
 import pro.carberry.multiplatform.navigation.AuthAppScreens.Login
 import pro.carberry.multiplatform.navigation.AuthAppScreens.Register
 import pro.carberry.multiplatform.navigation.AuthAppScreens.ResetPassword
+import pro.carberry.multiplatform.navigation.NewOrderAppScreens.MainInfo
+import pro.carberry.multiplatform.navigation.NewOrderAppScreens.Services
 import pro.carberry.multiplatform.navigation.PolicyAppScreens.Privacy
 import pro.carberry.multiplatform.navigation.PolicyAppScreens.Refund
 import pro.carberry.multiplatform.navigation.PolicyAppScreens.TermsOfService
 import pro.carberry.multiplatform.navigation.RootAppScreens.AuthFlow
 import pro.carberry.multiplatform.navigation.RootAppScreens.Main
+import pro.carberry.multiplatform.navigation.RootAppScreens.NewOrderFlow
 import pro.carberry.multiplatform.navigation.RootAppScreens.PolicyFlow
 import pro.carberry.multiplatform.navigation.RootAppScreens.Splash
 import pro.carberry.multiplatform.theme.AppTheme
@@ -78,9 +82,10 @@ fun NavGraphBuilder.policyGraph() {
 
 fun NavGraphBuilder.newOrderGraph() {
     navigation(
-        startDestination = NewOrderAppScreens.MainInfo.name,
-        route = RootAppScreens.NewOrderFlow.name
+        startDestination = MainInfo.name,
+        route = NewOrderFlow.name
     ) {
-        composable(route = NewOrderAppScreens.MainInfo.name) { OrderMainInfoScreen() }
+        composable(route = MainInfo.name) { OrderMainInfoScreen() }
+        composable(route = Services.name) { OrderServicesScreen() }
     }
 }
