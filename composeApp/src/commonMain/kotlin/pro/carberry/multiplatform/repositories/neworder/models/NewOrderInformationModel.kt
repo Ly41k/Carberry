@@ -11,7 +11,7 @@ import pro.carberry.multiplatform.repositories.neworder.models.NewOrderGroupInfo
 data class NewOrderGroupInfoModel(
     val groupType: DropMenuGroupType,
     val items: List<NewOrderInfoModel>,
-    val selectedItem: NewOrderInfoModel? = if (items.size == 1) items.firstOrNull() else null
+    val selectedItem: NewOrderInfoModel? = null
 ) {
     data class NewOrderInfoModel(val id: Long, val title: String)
 }
