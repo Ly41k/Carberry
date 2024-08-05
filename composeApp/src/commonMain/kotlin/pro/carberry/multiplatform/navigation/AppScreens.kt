@@ -23,7 +23,7 @@ enum class PolicyAppScreens {
 }
 
 enum class NewOrderAppScreens {
-    MainInfo
+    MainInfo, Services
 }
 
 enum class MainAppScreens {
