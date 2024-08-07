@@ -1,0 +1,98 @@
+[
+  {
+    "service_id": 0,
+    "service_type": "DFAP",
+    "service_name": "DPF/FAP - Delete",
+    "service_amount": 80,
+    "serviceIconUrl": null,
+    "service_extra_info": "All sensors deactivated. You can disconnect if you want."
+  },
+  {
+    "service_id": 1,
+    "service_type": "EGR",
+    "service_name": "EGR/AGR Removal",
+    "service_amount": 75,
+    "serviceIconUrl": null,
+    "service_extra_info": "Full egr off with ability of disconnect plug"
+  },
+  {
+    "service_id": 2,
+    "service_type": "SCR",
+    "service_name": "SCR/AdBlue/DEF/UREA Delete",
+    "service_amount": 150,
+    "serviceIconUrl": null,
+    "service_extra_info": "Please do all resets of AdBlue values before writing AdBlue off file. This is full solution with disconnected AdBlue ECU. If you still will have message on dashboard, please use ESYS for coding"
+  },
+  {
+    "service_id": 3,
+    "service_type": "Speed",
+    "service_name": "Speed limiter/ Vmax modify",
+    "service_amount": 70,
+    "serviceIconUrl": null,
+    "service_extra_info": null
+  },
+  {
+    "service_id": 4,
+    "service_type": "Swirl",
+    "service_name": "Swirl valve/Flaps OFF",
+    "service_amount": 95,
+    "serviceIconUrl": null,
+    "service_extra_info": null
+  },
+  {
+    "service_id": 5,
+    "service_type": "DTC",
+    "service_name": "DTC's selectivity OFF",
+    "service_amount": 60,
+    "serviceIconUrl": null,
+    "service_extra_info": null
+  },
+  {
+    "service_id": 6,
+    "service_type": "Start",
+    "service_name": "Start/Stop OFF",
+    "service_amount": 90,
+    "serviceIconUrl": null,
+    "service_extra_info": null
+  },
+  {
+    "service_id": 7,
+    "service_type": "Readiness",
+    "service_name": "Readiness codes monitors Ready",
+    "service_amount": 50,
+    "serviceIconUrl": null,
+    "service_extra_info": null
+  },
+  {
+    "service_id": 8,
+    "service_type": "CVN",
+    "service_name": "CVN fix Warranty Patch",
+    "service_amount": 90,
+    "serviceIconUrl": null,
+    "service_extra_info": null
+  },
+  {
+    "service_id": 9,
+    "service_type": "Checksumm",
+    "service_name": "Checksumm correction",
+    "service_amount": 40,
+    "serviceIconUrl": null,
+    "service_extra_info": "Checksumm correction: select this option ONLY if you really need checksumm and your device not do it automatically, because this option cost additional money!"
+  },
+  {
+    "service_id": 10,
+    "service_type": "Gauge",
+    "service_name": "BMW Sport Display Gauge scale",
+    "service_amount": 70,
+    "serviceIconUrl": null,
+    "service_extra_info": "This option allow to increase indicating max values on BMW Sport Display Power Torque Gauge. Possible increase only for versions on which present this option already"
+  },
+  {
+    "service_id": 11,
+    "service_type": "Speed",
+    "service_name": "ZF 8HP AL55x/AL951/Ford-GM 10-speed/Aisin",
+    "service_amount": 120,
+    "serviceIconUrl": null,
+    "service_extra_info": "Gearbox tuning on this moment included torque limits lifting, speed of shifting increase, rpm points optimise"
+  }
+]
