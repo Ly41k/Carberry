@@ -14,6 +14,7 @@ kodein = "7.21.2"
 viewmodel = "2.8.0-beta01"
 navigation = "2.7.0-alpha03"
 autolinktext = "1.1.1"
+bigdecimal = "0.3.10"
 
 [libraries]
 
@@ -38,6 +39,8 @@ kodein = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
 compose-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewmodel" }
 compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }
 autolinktext = { module = "sh.calvin.autolinktext:autolinktext", version.ref = "autolinktext" }
+
+bignum-bigdecimal = { module = "com.ionspin.kotlin:bignum", version.ref = "bigdecimal" }
 
 [plugins]
 

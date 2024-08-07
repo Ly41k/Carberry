@@ -70,6 +70,7 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kodein)
             implementation(libs.autolinktext)
+            implementation(libs.bignum.bigdecimal)
 
             implementation(libs.compose.viewmodel)
             implementation(libs.compose.navigation)
